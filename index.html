@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lead Island — a ilha onde nenhum lead se perde</title>
+<meta name="description" content="Um funcionário de IA no seu WhatsApp: qualifica leads, calcula pela sua tabela sem inventar, não desiste de quem some e chama você na hora de fechar.">
+<meta name="theme-color" content="#070707">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 30'%3E%3Crect width='26' height='30' rx='6' fill='%23070707'/%3E%3Cpath d='M10 12h6l1.6 13H8.4L10 12Z' fill='%23F4F4F1'/%3E%3Crect x='9' y='8.5' width='8' height='3.5' rx='1' fill='%23F4F4F1' opacity='.6'/%3E%3Cpath d='M13 2.5l3.4 4.5H9.6L13 2.5Z' fill='%23F4F4F1'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Lead Island">
+<meta property="og:title" content="Lead Island — a ilha onde nenhum lead se perde">
+<meta property="og:description" content="Um funcionário de IA no seu WhatsApp: qualifica, calcula pela sua tabela, não desiste de quem some e chama você na hora de fechar.">
+<meta property="og:image" content="https://akamitatrush.github.io/leadisland-site/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#070707;
+  --ink-2:#0D0D0D;
+  --panel:#101010;
+  --paper:#F5F5F5;
+  --gray:#A8A8A8;
+  --dim:#585858;
+  --hair:#232323;
+  --hair-strong:#3B3B3B;
+  --wa:#25D366;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Archivo",sans-serif;
+  --mono:"IBM Plex Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--paper);font-family:var(--sans);font-size:17px;line-height:1.7;overflow-x:hidden;caret-color:var(--paper);accent-color:var(--wa)}
+::selection{background:var(--paper);color:var(--ink)}
+::-webkit-scrollbar{width:11px}
+::-webkit-scrollbar-track{background:var(--ink)}
+::-webkit-scrollbar-thumb{background:var(--hair-strong);border-radius:6px;border:2px solid var(--ink)}
+::-webkit-scrollbar-thumb:hover{background:var(--dim)}
+a{text-underline-offset:3px}
+a,button,summary{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+section,header{scroll-margin-top:72px}
+:focus-visible{outline:2px solid var(--paper);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--paper);color:var(--ink);padding:10px 18px;font-weight:600;border-radius:0 0 10px 0}
+.skip:focus{left:0}
+
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E")}
+#torch{position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(560px circle at var(--mx,-800px) var(--my,-800px),rgba(245,245,245,.05),transparent 65%)}
+
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px;position:relative;z-index:2}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(7,7,7,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--hair)}
+.nav-in{max-width:1120px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--paper)}
+.logo b{font-family:var(--serif);font-weight:600;font-size:20px;transition:letter-spacing .3s}
+.logo:hover b{letter-spacing:.6px}
+.logo b span{font-style:italic}
+.nav-links{display:flex;gap:26px;align-items:center}
+.nav-links a{color:var(--gray);text-decoration:none;font-size:14.5px;transition:color .2s;padding:10px 2px}
+.nav-links a:hover{color:var(--paper)}
+.btn{display:inline-flex;align-items:center;gap:9px;background:var(--wa);color:#04140A;font-weight:600;font-size:15.5px;padding:12px 22px;border-radius:10px;text-decoration:none;transition:transform .18s,box-shadow .18s;box-shadow:0 8px 24px rgba(0,0,0,.45)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(0,0,0,.55)}
+.btn:active{transform:translateY(0)}
+.btn.small{padding:9px 16px;font-size:14px;white-space:nowrap}
+nav .btn{background:var(--paper);color:var(--ink);box-shadow:none}
+nav .btn:hover{box-shadow:0 6px 20px rgba(245,245,245,.14)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;color:var(--paper);text-decoration:none;font-weight:500;font-size:15.5px;padding:12px 6px;border-bottom:1px solid transparent;transition:border-color .2s}
+.btn-ghost:hover{border-color:var(--paper)}
+@media(max-width:720px){.nav-links a:not(.btn){display:none}}
+@media(max-width:400px){.btn.small{font-size:13px;padding:8px 12px}}
+
+/* hero */
+header{position:relative;min-height:min(100svh,940px);display:flex;align-items:center;overflow:hidden;border-bottom:1px solid var(--hair)}
+.beacon{position:absolute;top:190px;right:16%;z-index:3;pointer-events:none}
+.beam-wedge{position:absolute;left:-550px;top:-550px;width:1100px;height:1100px;
+  background:conic-gradient(from 0deg,transparent 0deg,rgba(244,244,241,.13) 8deg,rgba(244,244,241,.04) 20deg,transparent 30deg);
+  animation:sweep 9s linear infinite;filter:blur(5px)}
+@keyframes sweep{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.lh{position:absolute;left:0;top:0;transform:translate(-50%,-35px)}
+@media(max-width:900px){
+  .beacon{right:15%;top:150px}
+  .beam-wedge{left:-350px;top:-350px;width:700px;height:700px}
+  .lh{transform:translate(-50%,-26px) scale(.72);transform-origin:50% 26px}
+}
+.hero-in{padding-top:150px;padding-bottom:120px;max-width:760px}
+h1{font-family:var(--serif);font-weight:700;font-size:clamp(38px,6vw,68px);line-height:1.06;letter-spacing:-.5px;text-wrap:balance}
+h1 em{font-style:italic;font-weight:600;display:block;margin-top:10px;color:var(--gray)}
+.hero-sub{margin:28px 0 36px;font-size:clamp(16px,2vw,19px);color:var(--gray);max-width:560px}
+.hero-sub b{color:var(--paper);font-weight:500}
+.hero-cta{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.micro{margin-top:16px;font-size:13.5px;color:var(--gray);font-style:italic}
+.micro span{color:var(--paper)}
+.rise{opacity:0;transform:translateY(22px);animation:rise .8s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+.rise:nth-child(1){animation-delay:.05s}.rise:nth-child(2){animation-delay:.16s}
+.rise:nth-child(3){animation-delay:.3s}.rise:nth-child(4){animation-delay:.44s}
+
+section{position:relative;padding:96px 0;border-bottom:1px solid var(--hair)}
+h2{font-family:var(--serif);font-weight:600;font-size:clamp(28px,4vw,42px);line-height:1.15;max-width:680px;text-wrap:balance}
+.lead-p{margin-top:18px;color:var(--gray);max-width:620px}
+.lead-p b{color:var(--paper);font-weight:500}
+
+/* frota */
+.fleet{margin-top:52px;display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,380px);gap:48px;align-items:center}
+@media(max-width:860px){.fleet{grid-template-columns:1fr}}
+.fleet-copy p{font-size:clamp(19px,2.6vw,25px);font-family:var(--serif);line-height:1.5;max-width:520px}
+.fleet-copy .n{font-weight:700;font-style:italic}
+.fleet-copy .n.all{color:var(--paper)}
+.fleet-copy .n.ok{color:var(--paper);border-bottom:2px solid var(--wa)}
+.fleet-copy .n.lost{color:var(--dim)}
+.fleet-copy small{display:block;margin-top:22px;font-size:14px;color:var(--gray)}
+.flotilla{display:grid;grid-template-columns:repeat(10,1fr);gap:9px;padding:26px;background:var(--panel);border:1px solid var(--hair);border-radius:16px}
+.flotilla i{aspect-ratio:1;border-radius:3px;background:var(--hair);transition:background .5s}
+.flotilla i.ok{background:var(--paper)}
+.flotilla i.lost{background:#1B1B1B}
+.flotilla-cap{grid-column:1/-1;font-size:12.5px;color:var(--gray);text-align:center;padding-top:8px;font-family:var(--mono)}
+
+/* duelo */
+.duel{display:grid;grid-template-columns:5fr 7fr;gap:22px;margin-top:48px;align-items:start}
+@media(max-width:820px){.duel{grid-template-columns:1fr}}
+.duel-card{border-radius:18px;padding:30px 28px;border:1px solid var(--hair);background:var(--ink-2)}
+.duel-card.ours{border-color:var(--hair-strong);background:var(--panel);box-shadow:0 24px 70px rgba(0,0,0,.5);padding:38px 34px}
+.duel-card h3{font-family:var(--serif);font-size:20px;font-weight:600;margin-bottom:20px;color:var(--dim)}
+.duel-card.ours h3{color:var(--paper);font-size:24px}
+.duel-card ul{list-style:none}
+.duel-card li{display:flex;gap:12px;margin-bottom:14px;font-size:15px;color:var(--gray);align-items:flex-start}
+.duel-card.ours li{color:var(--paper);font-size:16px}
+.duel-card li svg{flex-shrink:0;margin-top:4px}
+.duel-card.ours b{font-weight:600;border-bottom:1px solid var(--wa)}
+
+/* rota */
+.route{margin-top:56px;position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.route::before{content:"";position:absolute;top:9px;left:4%;right:4%;border-top:1px dashed var(--hair-strong);
+  transform:scaleX(0);transform-origin:left;transition:transform 1.4s cubic-bezier(.16,1,.3,1) .1s}
+.route.lit::before{transform:scaleX(1)}
+@media(max-width:900px){.route{grid-template-columns:1fr 1fr}.route::before{display:none}}
+@media(max-width:560px){.route{grid-template-columns:1fr}}
+.stop{position:relative;padding-top:34px;opacity:.3;transform:translateY(8px);transition:opacity .6s ease,transform .6s ease}
+.route .stop:nth-child(1){transition-delay:.1s}
+.route .stop:nth-child(2){transition-delay:.35s}
+.route .stop:nth-child(3){transition-delay:.6s}
+.route .stop:nth-child(4){transition-delay:.85s}
+.route .stop:nth-child(5){transition-delay:1.1s}
+.route.lit .stop{opacity:1;transform:none}
+.stop::before{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:var(--ink);border:2px solid var(--dim);transition:border-color .5s;transition-delay:inherit}
+.route.lit .stop::before{border-color:var(--paper)}
+.stop.farol::before{background:var(--paper);border-color:var(--paper);box-shadow:0 0 18px rgba(244,244,241,.55)}
+.stop h4{font-family:var(--serif);font-size:19px;font-weight:600;margin-bottom:6px}
+.stop p{font-size:14px;color:var(--gray);line-height:1.55}
+
+/* torre */
+.tower{margin-top:54px;background:var(--panel);border:1px solid var(--hair-strong);border-radius:16px;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.6);max-width:880px}
+.chrome{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--hair);background:var(--ink-2)}
+.chrome i{width:10px;height:10px;border-radius:50%;background:var(--hair-strong)}
+.chrome span{margin-left:10px;font-size:12px;color:var(--gray);background:var(--ink);border:1px solid var(--hair);border-radius:6px;padding:3px 12px;font-family:var(--mono)}
+.tw-head{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 22px;border-bottom:1px solid var(--hair);flex-wrap:wrap}
+.tw-head h3{font-family:var(--serif);font-size:17px;font-weight:600}
+.tw-head h3 small{display:block;font-family:var(--sans);font-weight:400;font-size:12.5px;color:var(--gray);margin-top:2px}
+.tw-stats{display:flex;gap:10px;flex-wrap:wrap}
+.tw-stats span{font-size:12px;padding:5px 12px;border-radius:999px;border:1px solid var(--hair-strong);color:var(--gray);font-family:var(--mono)}
+.tw-stats .hot{border-color:var(--paper);color:var(--paper)}
+.convs{list-style:none}
+.convs li{display:grid;grid-template-columns:40px 1fr auto;gap:14px;align-items:center;padding:14px 22px;border-bottom:1px solid var(--hair);transition:background .2s}
+.convs li:hover{background:rgba(244,244,241,.02)}
+.convs li:last-child{border-bottom:none}
+.convs .av{width:40px;height:40px;border-radius:50%;background:var(--ink-2);border:1px solid var(--hair-strong);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:600;font-size:15px;color:var(--gray)}
+.convs .who b{display:block;font-size:14.5px;font-weight:500}
+.convs .who span{font-size:13px;color:var(--gray);display:block;max-width:380px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.convs .meta{text-align:right}
+.convs .meta time{display:block;font-size:11.5px;color:var(--gray);font-family:var(--mono);margin-bottom:5px}
+.badge{font-size:11px;font-weight:600;letter-spacing:.3px;padding:3px 10px;border-radius:999px}
+.badge.ia{border:1px solid var(--wa);color:var(--wa)}
+.badge.farol{background:var(--paper);color:var(--ink)}
+.badge.hum{border:1px solid var(--gray);color:var(--paper)}
+.badge.esc{border:1px solid var(--dim);color:var(--gray)}
+.convs li.glow{background:linear-gradient(90deg,rgba(244,244,241,.07) 0%,transparent 60%)}
+@media(max-width:560px){
+  .convs li{grid-template-columns:34px 1fr}
+  .convs .av{width:34px;height:34px;font-size:13px}
+  .convs .meta{grid-column:2;text-align:left;display:flex;gap:10px;align-items:center}
+  .convs .meta time{margin-bottom:0}
+}
+.tower-cap{margin-top:18px;font-size:13.5px;color:var(--gray);font-style:italic;max-width:640px}
+
+/* ana */
+.story{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+@media(max-width:860px){.story{grid-template-columns:1fr;gap:36px}}
+.phone{background:var(--panel);border:1px solid var(--hair-strong);border-radius:26px;padding:26px 22px;max-width:420px;box-shadow:0 30px 80px rgba(0,0,0,.55)}
+.bub{max-width:85%;padding:11px 15px;border-radius:14px;font-size:14.5px;line-height:1.5;margin-bottom:10px;transition:opacity .6s ease,transform .6s ease}
+.phone.prep .bub{opacity:0;transform:translateY(12px)}
+.phone.in .bub{opacity:1;transform:none}
+.phone.in .bub:nth-child(1){transition-delay:.1s}
+.phone.in .bub:nth-child(2){transition-delay:.5s}
+.phone.in .bub:nth-child(3){transition-delay:.9s}
+.phone.in .bub:nth-child(4){transition-delay:1.4s}
+.phone.in .bub:nth-child(5){transition-delay:1.9s}
+.b-ana{background:var(--ink-2);border:1px solid var(--hair);color:var(--paper);border-bottom-left-radius:4px}
+.b-ia{background:rgba(37,211,102,.09);border:1px solid rgba(37,211,102,.35);color:#B8EACB;margin-left:auto;border-bottom-right-radius:4px}
+.b-note{background:none;color:var(--gray);font-style:italic;font-size:12.5px;text-align:center;max-width:100%;padding:4px}
+.story-txt h2{max-width:none}
+.big-q{font-family:var(--serif);font-style:italic;font-size:21px;color:var(--paper);margin-top:24px;border-left:1px solid var(--paper);padding-left:18px}
+
+/* manifesto */
+.manifest{margin-top:48px;border-top:1px solid var(--hair);max-width:820px}
+.manifest li{list-style:none;display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:baseline;padding:22px 4px;border-bottom:1px solid var(--hair);transition:background .2s}
+.manifest li:hover{background:rgba(244,244,241,.015)}
+.manifest h4{font-family:var(--serif);font-size:21px;font-weight:600;min-width:230px}
+.manifest p{font-size:14.5px;color:var(--gray)}
+.manifest .tag{font-size:10.5px;font-weight:500;letter-spacing:1px;text-transform:uppercase;padding:4px 12px;border-radius:999px;white-space:nowrap;font-family:var(--mono)}
+.tag.on{border:1px solid var(--paper);color:var(--paper)}
+.tag.forming{border:1px solid var(--hair-strong);color:var(--gray)}
+@media(max-width:640px){.manifest li{grid-template-columns:1fr;gap:6px}.manifest h4{min-width:0}}
+
+/* planos */
+.plans{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:48px;max-width:820px}
+@media(max-width:720px){.plans{grid-template-columns:1fr}}
+.plan{background:var(--ink-2);border:1px solid var(--hair);border-radius:18px;padding:34px 30px}
+.plan.hot{border-color:var(--paper);background:var(--panel)}
+.plan .tag-p{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gray);font-weight:500;font-family:var(--mono)}
+.plan.hot .tag-p{color:var(--gray)}
+.plan h3{font-family:var(--serif);font-size:23px;font-weight:600;margin:10px 0 4px}
+.price{font-family:var(--serif);font-size:42px;font-weight:700;margin:14px 0 4px;font-variant-numeric:tabular-nums}
+.price small{font-size:15px;font-family:var(--sans);font-weight:400;color:var(--gray)}
+.plan ul{margin-top:18px;list-style:none}
+.plan li{font-size:14.5px;color:var(--gray);padding:7px 0;border-bottom:1px dashed var(--hair)}
+.plan li:last-child{border:none}
+.founder-offer{margin-top:26px;max-width:820px;border:1px solid var(--paper);border-radius:16px;padding:26px 28px}
+.founder-offer h3{font-family:var(--serif);font-size:21px;font-weight:600;margin-bottom:8px}
+.founder-offer p{font-size:15px;color:var(--gray);max-width:660px}
+.founder-offer p b{color:var(--paper)}
+
+/* faq */
+.faq{max-width:720px;margin-top:44px}
+.faq details{border-bottom:1px solid var(--hair);padding:4px 0}
+.faq summary{cursor:pointer;font-weight:500;font-size:16.5px;padding:16px 0;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--serif);color:var(--gray);font-size:22px;transition:transform .25s;flex-shrink:0}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 0 18px;color:var(--gray);font-size:15px;max-width:640px}
+.faq a{color:var(--paper)}
+
+/* final */
+.final{text-align:center;padding:130px 0 120px;border-bottom:none}
+.final h2{max-width:none;font-size:clamp(32px,5vw,54px)}
+.final h2 em{font-style:italic;color:var(--gray)}
+.final .btn{margin-top:36px;font-size:17px;padding:16px 30px}
+.final .micro{margin-top:18px}
+
+footer{border-top:1px solid var(--hair);padding:36px 0}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-size:13.5px;color:var(--gray)}
+.foot a{color:var(--gray)}
+.foot a:hover{color:var(--paper)}
+.foot .tetsu{font-size:12px;opacity:.7;letter-spacing:1px}
+
+@media (prefers-reduced-motion: reduce){
+  .beam-wedge{animation:none;opacity:.4}
+  .rise{animation:none;opacity:1;transform:none}
+  .bub{transition:none}
+  .phone.prep .bub{opacity:1;transform:none}
+  .flotilla i{transition:none}
+  #torch{display:none}
+  .route .stop{opacity:1;transform:none;transition:none}
+  .route::before{transform:none;transition:none}
+  .stop::before{transition:none}
+}
+</style>
+</head>
+<body>
+<div id="torch" aria-hidden="true"></div>
+<a class="skip" href="#conta">Pular para o conteúdo</a>
+
+<nav aria-label="Principal">
+  <div class="nav-in">
+    <a class="logo" href="#" aria-label="Lead Island — início">
+      <svg width="26" height="30" viewBox="0 0 26 30" fill="none" aria-hidden="true">
+        <path d="M9 12h8l2 16H7l2-16Z" fill="#F5F5F5"/>
+        <path d="M10.5 12h5L17 26H9l1.5-14Z" fill="#070707" opacity=".2"/>
+        <rect x="8" y="8" width="10" height="4" rx="1" fill="#F5F5F5" opacity=".6"/>
+        <path d="M13 1l4 5H9l4-5Z" fill="#F5F5F5"/>
+        <path d="M8 9.5 1 6M18 9.5 25 6" stroke="#F5F5F5" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
+      </svg>
+      <b>Lead <span>Island</span></b>
+    </a>
+    <div class="nav-links">
+      <a href="#mapa">Como funciona</a>
+      <a href="#torre">A Torre</a>
+      <a href="#planos">Planos</a>
+      <a class="btn small" href="https://wa.me/5500000000000?text=Oi!%20Quero%20conhecer%20a%20Lead%20Island" target="_blank" rel="noopener">Falar com o funcionário</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="beacon" aria-hidden="true">
+    <div class="beam-wedge"></div>
+    <svg class="lh" width="120" height="150" viewBox="0 0 60 76" fill="none">
+      <path d="M22 28h16l5 44H17l5-44Z" fill="#101010" stroke="#3B3B3B"/>
+      <rect x="20" y="22" width="20" height="7" rx="1.5" fill="#1B1B1B" stroke="#3B3B3B" stroke-width=".6"/>
+      <rect x="23" y="14" width="14" height="8" rx="1" fill="#F5F5F5"/>
+      <path d="M30 4l8 10H22l8-10Z" fill="#1B1B1B" stroke="#3B3B3B" stroke-width=".6"/>
+      <circle cx="30" cy="18" r="2.4" fill="#070707"/>
+    </svg>
+  </div>
+  <div class="wrap hero-in">
+    <h1 class="rise">Todo dia, leads afundam no seu WhatsApp. <em>Nesta ilha, nenhum se perde.</em></h1>
+    <p class="hero-sub rise">A Lead Island coloca um <b>funcionário de IA</b> no seu número: ele qualifica cada lead na hora, calcula pela <b>sua</b> tabela sem inventar nada, <b>não desiste de quem some</b> — e chama você na hora certa de fechar.</p>
+    <div class="hero-cta rise">
+      <a class="btn" href="https://wa.me/5500000000000?text=Oi!%20Quero%20conhecer%20a%20Lead%20Island" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.1-4.7-4-4.9-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5s.8 1.9.8 2c.1.1.1.3 0 .5l-.4.6c-.2.2-.3.4-.1.7.2.3.8 1.4 1.8 2.2 1.2 1.1 2.3 1.4 2.6 1.6.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.1.1.7-.2 1.2Z"/></svg>
+        Falar com o funcionário de IA
+      </a>
+      <a class="btn-ghost" href="#mapa">Conhecer a ilha ↓</a>
+    </div>
+    <p class="micro rise">Sério: quem atende é <span>ele mesmo</span>. Vai tentar te vender a própria ilha — e provavelmente consegue.</p>
+  </div>
+</header>
+
+<section id="conta">
+  <div class="wrap">
+    <h2>Você já paga pelos 100. Só atende 30.</h2>
+    <div class="fleet">
+      <div class="fleet-copy">
+        <p>De cada <span class="n all"><span class="cnt" data-t="100">100</span> leads</span> que o seu anúncio traz, <span class="n ok"><span class="cnt" data-t="30">30</span></span> recebem resposta a tempo. Os outros <span class="n lost"><span class="cnt" data-t="70">70</span></span> esfriam no vácuo — e compram do concorrente sem você ficar sabendo.</p>
+        <small>Proporções típicas de uma operação de PME que anuncia no Meta Ads e atende no WhatsApp. O funcionário de IA existe pelos 70.</small>
+      </div>
+      <div class="flotilla" id="flotilla" role="img" aria-label="Cem quadrados representando leads: trinta acesos em branco, setenta apagados — os que esfriam sem resposta.">
+        <span class="flotilla-cap">■ 30 atendidos · <span style="color:var(--gray)">■ 70 perdidos no mar</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="duelo">
+  <div class="wrap">
+    <h2>A rua está cheia de robôs à venda. Nós formamos funcionários.</h2>
+    <div class="duel">
+      <div class="duel-card">
+        <h3>O robô que todo mundo vende</h3>
+        <ul>
+          <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#585858" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg>Chega em branco: "escreva você o prompt do seu negócio"</li>
+          <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#585858" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg>Conversa solta: inventa preço, promete o que não existe</li>
+          <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#585858" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg>Follow-up? Monte você mesmo, caixinha por caixinha</li>
+          <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#585858" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg>Genérico pra qualquer ramo — ótimo em nenhum</li>
+        </ul>
+      </div>
+      <div class="duel-card ours">
+        <h3>O funcionário formado na ilha</h3>
+        <ul>
+          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="#F5F5F5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4"/></svg>Anda nos trilhos do <b>seu</b> funil — pergunta certa, na ordem certa, sem sair do assunto</li>
+          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="#F5F5F5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4"/></svg>Calcula pela <b>sua</b> tabela de preços. Nunca inventa um número — é regra de fundação</li>
+          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="#F5F5F5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4"/></svg>Farol embutido: retoma quem sumiu com contexto e limite educado — <b>sem virar spam</b></li>
+          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="#F5F5F5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4"/></svg>Sabe a hora de chamar você — o humano assume qualquer conversa com um clique</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="mapa">
+  <div class="wrap">
+    <h2>A rota de um lead pela ilha.</h2>
+    <div class="route">
+      <div class="stop"><h4>Porto</h4><p>Seu lead chega por anúncio, site ou indicação — e é recebido na hora, de madrugada inclusive.</p></div>
+      <div class="stop"><h4>Trilhos</h4><p>O agente conversa seguindo o funil que você definiu: qualifica, coleta, calcula.</p></div>
+      <div class="stop farol"><h4>Farol</h4><p>O lead sumiu? O farol acende: retomada com contexto, no tempo certo, com limite educado.</p></div>
+      <div class="stop"><h4>Balsa</h4><p>Qualificado e completo, o lead é entregue no seu CRM — ou direto no WhatsApp do vendedor.</p></div>
+      <div class="stop"><h4>Torre</h4><p>Você vê todas as conversas ao vivo e assume qualquer uma com um clique.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="torre">
+  <div class="wrap">
+    <h2>A Torre: você no comando, o tempo todo.</h2>
+    <p class="lead-p">É daqui que o dono enxerga a ilha: cada conversa ao vivo, quem está com a bola — a IA, o farol ou um humano — e os leads que voltaram do mar.</p>
+    <div class="tower" role="img" aria-label="Demonstração do painel da Torre de controle: lista de conversas com etiquetas de IA ativa, farol e atendimento humano.">
+      <div class="chrome" aria-hidden="true"><i></i><i></i><i></i><span>torre.leadisland.com.br · demonstração</span></div>
+      <div class="tw-head">
+        <h3>Loja do Roberto <small>segunda-feira, 7h40 · resumo do fim de semana</small></h3>
+        <div class="tw-stats"><span>47 conversas</span><span>12 quentes</span><span class="hot">9 resgatados pelo farol</span></div>
+      </div>
+      <ul class="convs" aria-hidden="true">
+        <li class="glow">
+          <span class="av">J</span>
+          <span class="who"><b>João · iPhone 15 com troca</b><span>"Bora fechar!" — avaliação R$ 1.425 aceita</span></span>
+          <span class="meta"><time>08:52</time><span class="badge farol">resgatado pelo farol</span></span>
+        </li>
+        <li>
+          <span class="av">M</span>
+          <span class="who"><b>Marina · iPhone 13 Pro</b><span>"Qual o valor com a minha troca?" — coletando estado do aparelho</span></span>
+          <span class="meta"><time>08:47</time><span class="badge ia">IA ativa</span></span>
+        </li>
+        <li>
+          <span class="av">C</span>
+          <span class="who"><b>Carlos · pagamento alternativo</b><span>"Aceita uma CG 160 como parte?" — fora do funil, aguardando humano</span></span>
+          <span class="meta"><time>08:31</time><span class="badge esc">escalado</span></span>
+        </li>
+        <li>
+          <span class="av" style="border-color:#F5F5F5;color:#F5F5F5">P</span>
+          <span class="who"><b>Paula (vendedora) · com Denise</b><span>"Te espero às 10h na loja, combinado?" — humano no comando</span></span>
+          <span class="meta"><time>08:19</time><span class="badge hum">humano ativo</span></span>
+        </li>
+      </ul>
+    </div>
+    <p class="tower-cap">Ambiente de demonstração com dados fictícios — é assim que a sua Torre nasce no primeiro dia, com os seus leads de verdade.</p>
+  </div>
+</section>
+
+<section id="ana">
+  <div class="wrap story">
+    <div class="story-txt">
+      <h2>A Ana ia embora. O farol trouxe de volta.</h2>
+      <p class="lead-p">Ela se interessou, respondeu — e sumiu no meio da conversa, como a maioria faz. Quatro horas depois, o farol acendeu com o contexto dela. A Ana voltou, mandou os documentos e virou proposta. <b>Cena do nosso funil de demonstração de energia.</b></p>
+      <p class="big-q">"Sem o farol, esse lead estava morto. É a cena que paga a ilha."</p>
+    </div>
+    <div class="phone" id="phone" role="img" aria-label="Conversa de WhatsApp: Ana informa o valor da conta, some por quatro horas, o farol retoma citando a economia e Ana responde que quer continuar.">
+      <div class="bub b-ana">Uns 240 reais por mês</div>
+      <div class="bub b-note">— Ana some por 4 horas —</div>
+      <div class="bub b-ia">Oi Ana! Com R$ 240/mês, sua economia ficaria em torno de R$ 430 por ano. Vamos continuar de onde paramos?</div>
+      <div class="bub b-ana">Opa, vamos sim!</div>
+      <div class="bub b-note">lead resgatado · entregue ao vendedor</div>
+    </div>
+  </div>
+</section>
+
+<section id="nichos">
+  <div class="wrap">
+    <h2>Funcionários já formados no seu ramo.</h2>
+    <p class="lead-p">Nada de "configure seu prompt". Cada ramo tem um funil pronto — as perguntas, as regras e o jeito de falar do seu mercado — ajustado ao seu negócio em dias.</p>
+    <ul class="manifest">
+      <li>
+        <h4>Revenda de celulares</h4>
+        <p>Avaliação de troca calculada pela sua tabela: modelo, tela, bateria — sem chute e sem prejuízo.</p>
+        <span class="tag on">funil pronto</span>
+      </li>
+      <li>
+        <h4>Energia por assinatura</h4>
+        <p>Qualificação pela conta de luz, coleta de documentos e handoff — do anúncio à proposta.</p>
+        <span class="tag on">funil pronto</span>
+      </li>
+      <li>
+        <h4>Crédito consignado</h4>
+        <p>Coleta guiada e didática de dados e documentos, com consentimento LGPD no fluxo.</p>
+        <span class="tag forming">em formação</span>
+      </li>
+      <li>
+        <h4>Clínicas e serviços</h4>
+        <p>Agendamento que confirma, lembra e reagenda — agenda cheia sem telefone tocando.</p>
+        <span class="tag forming">em formação</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="planos">
+  <div class="wrap">
+    <h2>Simples como deve ser.</h2>
+    <div class="plans">
+      <div class="plan">
+        <p class="tag-p">Chegada à ilha</p>
+        <h3>Setup único</h3>
+        <p class="price">R$ 1.500 <small>a partir de</small></p>
+        <ul>
+          <li>Funil do seu negócio montado e testado</li>
+          <li>Sua tabela de preços integrada</li>
+          <li>Número oficial WhatsApp configurado</li>
+          <li>Templates aprovados na Meta</li>
+        </ul>
+      </div>
+      <div class="plan hot">
+        <p class="tag-p">Vida na ilha</p>
+        <h3>Mensalidade</h3>
+        <p class="price">R$ 397 <small>/mês</small></p>
+        <ul>
+          <li>Funcionário de IA atendendo 24/7</li>
+          <li>Farol: follow-up automático e inteligente</li>
+          <li>Torre: painel ao vivo com handoff humano</li>
+          <li>Melhorias contínuas do funil</li>
+        </ul>
+      </div>
+    </div>
+    <div class="founder-offer">
+      <h3>Condição de fundador — 5 vagas</h3>
+      <p>Os cinco primeiros negócios da ilha levam <b>setup fixo de R$ 1.500</b> (qualquer complexidade), <b>preço travado por 12 meses</b> e o WhatsApp direto dos fundadores. Em troca, pedimos o que todo começo pede: feedback de verdade e, se a ilha entregar, permissão pra contar seu caso com números. Sem fidelidade — se não resgatar lead, cancele.</p>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <h2>O que todo mundo pergunta antes de atracar.</h2>
+    <div class="faq">
+      <details>
+        <summary>É a API oficial do WhatsApp?</summary>
+        <p>Sim. Número verificado na Meta, janela de 24 horas respeitada e templates aprovados pra retomada. Nada de gambiarra que derruba seu número.</p>
+      </details>
+      <details>
+        <summary>E se a IA não souber responder?</summary>
+        <p>Ela não inventa — essa é a regra número um da ilha. Fora do funil, ela responde com honestidade e chama um humano. Preço e cálculo saem sempre da sua tabela, nunca da imaginação dela.</p>
+      </details>
+      <details>
+        <summary>Posso assumir a conversa quando quiser?</summary>
+        <p>Um clique na Torre e a conversa é sua. A IA silencia, guarda o contexto e retoma quando você devolver.</p>
+      </details>
+      <details>
+        <summary>E a LGPD?</summary>
+        <p>Consentimento explícito no funil, dados guardados só com finalidade declarada, opt-out por mensagem e trilha de auditoria completa. Nascemos com a lei dentro de casa.</p>
+      </details>
+      <details>
+        <summary>Em quanto tempo fico no ar?</summary>
+        <p>Dias. Seu ramo já tem funil pronto — ajustamos com você, conectamos seu número e sua tabela, e o funcionário começa a trabalhar.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>Traga seus leads <em>pra terra firme.</em></h2>
+    <div>
+      <a class="btn" href="https://wa.me/5500000000000?text=Oi!%20Quero%20conhecer%20a%20Lead%20Island" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.1-4.7-4-4.9-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5s.8 1.9.8 2c.1.1.1.3 0 .5l-.4.6c-.2.2-.3.4-.1.7.2.3.8 1.4 1.8 2.2 1.2 1.1 2.3 1.4 2.6 1.6.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.1.1.7-.2 1.2Z"/></svg>
+        Falar com o funcionário de IA
+      </a>
+    </div>
+    <p class="micro">Atendimento imediato, de madrugada inclusive. <span>Vontade de ferro.</span></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div>Lead Island · feito no Brasil</div>
+    <div><a href="#faq">Privacidade &amp; LGPD</a></div>
+    <div class="tetsu">鉄心 · vontade de ferro</div>
+  </div>
+</footer>
+
+<script>
+const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const torch = document.getElementById('torch');
+if (matchMedia('(hover:hover) and (pointer:fine)').matches && !calm) {
+  let tx = -800, ty = -800, raf = null;
+  document.addEventListener('mousemove', (e) => {
+    tx = e.clientX; ty = e.clientY;
+    if (!raf) raf = requestAnimationFrame(() => {
+      torch.style.setProperty('--mx', tx + 'px');
+      torch.style.setProperty('--my', ty + 'px');
+      raf = null;
+    });
+  }, { passive: true });
+} else {
+  torch.remove();
+}
+
+const route = document.querySelector('.route');
+const routeIO = new IntersectionObserver((entries) => {
+  if (entries[0].isIntersecting) { route.classList.add('lit'); routeIO.disconnect(); }
+}, { threshold: 0.35 });
+routeIO.observe(route);
+
+const counts = [...document.querySelectorAll('.cnt')];
+if (!calm && counts.length) {
+  const conta = document.getElementById('conta');
+  const cntIO = new IntersectionObserver((entries) => {
+    if (!entries[0].isIntersecting) return;
+    cntIO.disconnect();
+    const t0 = performance.now();
+    const dur = 1300;
+    const tick = (now) => {
+      const p = Math.min(1, (now - t0) / dur);
+      const ease = 1 - Math.pow(1 - p, 3);
+      counts.forEach(c => { c.textContent = Math.round(ease * +c.dataset.t); });
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }, { threshold: 0.4 });
+  cntIO.observe(conta);
+}
+
+const flotilla = document.getElementById('flotilla');
+const cap = flotilla.querySelector('.flotilla-cap');
+const frag = document.createDocumentFragment();
+for (let i = 0; i < 100; i++) {
+  frag.appendChild(document.createElement('i'));
+}
+flotilla.insertBefore(frag, cap);
+const dots = [...flotilla.querySelectorAll('i')];
+const lit = new Set();
+while (lit.size < 30) lit.add(Math.floor(Math.random() * 100));
+const fleetIO = new IntersectionObserver((entries) => {
+  if (!entries[0].isIntersecting) return;
+  fleetIO.disconnect();
+  dots.forEach((d, i) => {
+    setTimeout(() => d.classList.add(lit.has(i) ? 'ok' : 'lost'), 12 * i);
+  });
+}, { threshold: 0.4 });
+fleetIO.observe(flotilla);
+
+const phone = document.getElementById('phone');
+phone.classList.add('prep');
+const phoneIO = new IntersectionObserver((entries) => {
+  if (entries[0].isIntersecting) { phone.classList.add('in'); phoneIO.disconnect(); }
+}, { threshold: 0.3 });
+phoneIO.observe(phone);
+</script>
+</body>
+</html>
