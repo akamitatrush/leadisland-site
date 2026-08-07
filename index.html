@@ -115,22 +115,17 @@ nav .btn:hover{box-shadow:0 6px 20px rgba(245,245,245,.14)}
 @media(max-width:720px){.nav-links a:not(.btn){display:none}}
 @media(max-width:400px){.btn.small{font-size:var(--fs-xs);padding:var(--s2) var(--s3)}}
 
-/* ---- hero ---- */
+/* ---- hero (fotografia real, Ken Burns) ---- */
 header{position:relative;min-height:min(100svh,940px);display:flex;align-items:center;overflow:hidden;border-bottom:1px solid var(--hair)}
-#ocean{position:absolute;left:0;right:0;bottom:0;width:100%;height:46%;z-index:var(--z-bg);pointer-events:none;opacity:0;transition:opacity 2s ease;
-  -webkit-mask-image:linear-gradient(to bottom,transparent,#000 34%);mask-image:linear-gradient(to bottom,transparent,#000 34%)}
-#ocean.on{opacity:.6}
-.beacon{position:absolute;top:190px;right:16%;z-index:var(--z-beacon);pointer-events:none}
-.beam-wedge{position:absolute;left:-550px;top:-550px;width:1100px;height:1100px;
-  background:conic-gradient(from 0deg,transparent 0deg,rgba(245,245,245,.13) 8deg,rgba(245,245,245,.04) 20deg,transparent 30deg);
-  animation:sweep 9s linear infinite;filter:blur(5px)}
-@keyframes sweep{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-.lh{position:absolute;left:0;top:0;transform:translate(-50%,-35px)}
-@media(max-width:900px){
-  .beacon{right:15%;top:150px}
-  .beam-wedge{left:-350px;top:-350px;width:700px;height:700px}
-  .lh{transform:translate(-50%,-26px) scale(.72);transform-origin:50% 26px}
-}
+.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 40%;z-index:0;
+  animation:kenburns 26s ease-in-out infinite alternate;transform-origin:62% 42%}
+@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.08)}}
+.hero-veil{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(90deg,rgba(7,7,7,.9) 0%,rgba(7,7,7,.62) 42%,rgba(7,7,7,.12) 72%,rgba(7,7,7,.3) 100%),
+             linear-gradient(to top,var(--ink) 0%,transparent 28%),
+             linear-gradient(to bottom,rgba(7,7,7,.55) 0%,transparent 18%)}
+.bg-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.bg-veil{position:absolute;inset:0;z-index:1;pointer-events:none}
 .hero-in{padding-top:150px;padding-bottom:120px;max-width:900px}
 h1{font-family:var(--serif);font-weight:700;font-size:var(--fs-h1);line-height:1.03;letter-spacing:-1px;text-wrap:balance}
 h1 em{font-style:italic;font-weight:600;display:block;margin-top:var(--s3);color:var(--gray)}
@@ -155,9 +150,11 @@ h2{font-family:var(--serif);font-weight:600;font-size:var(--fs-h2);line-height:v
 .mq{display:inline-block;white-space:nowrap;animation:mq 32s linear infinite;font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:2.2px;color:var(--gray);text-transform:uppercase}
 @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* ---- manifesto ---- */
-.statement{padding:var(--s10) var(--s5);text-align:center;border-bottom:1px solid var(--hair)}
-.statement p{font-family:var(--serif);font-style:italic;font-weight:600;font-size:var(--fs-giant);line-height:1.04;letter-spacing:-2px;text-wrap:balance}
+/* ---- manifesto (sobre a flotilha real) ---- */
+.statement{position:relative;overflow:hidden;padding:calc(var(--s10) + var(--s7)) var(--s5);text-align:center;border-bottom:1px solid var(--hair)}
+.statement .bg-photo{opacity:.55}
+.statement .bg-veil{background:radial-gradient(85% 90% at 50% 50%,rgba(7,7,7,.2) 0%,rgba(7,7,7,.88) 100%)}
+.statement p{position:relative;z-index:2;font-family:var(--serif);font-style:italic;font-weight:600;font-size:var(--fs-giant);line-height:1.04;letter-spacing:-2px;text-wrap:balance}
 
 /* ---- frota ---- */
 .fleet{margin-top:var(--s7);display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,380px);gap:var(--s7);align-items:center}
@@ -316,8 +313,11 @@ h2{font-family:var(--serif);font-weight:600;font-size:var(--fs-h2);line-height:v
 .faq details p{padding:0 0 var(--s4);color:var(--gray);font-size:var(--fs-md);max-width:640px}
 .faq a{color:var(--paper)}
 
-/* ---- final ---- */
-.final{text-align:center;padding:var(--s10) 0;border-bottom:none}
+/* ---- final (a loja às 23h) ---- */
+.final{position:relative;overflow:hidden;text-align:center;padding:calc(var(--s10) + var(--s6)) 0;border-bottom:none}
+.final .bg-photo{opacity:.5}
+.final .bg-veil{background:linear-gradient(to bottom,var(--ink) 0%,rgba(7,7,7,.45) 40%,rgba(7,7,7,.75) 100%)}
+.final .wrap{z-index:2}
 .final h2{max-width:none;font-size:clamp(32px,5vw,54px)}
 .final h2 em{font-style:italic;color:var(--gray)}
 .final .btn{margin-top:var(--s6);font-size:var(--fs-body);padding:var(--s4) var(--s6)}
@@ -339,6 +339,7 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
   .beam-wedge{animation:none;opacity:.4}
   .rise{animation:none;opacity:1;transform:none}
   .flotilla i{transition:none}
+  .hero-photo{animation:none}
   #torch{display:none}
   .route .stop{opacity:1;transform:none;transition:none}
   .route::before{transform:none;transition:none}
@@ -375,17 +376,8 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
 </nav>
 
 <header>
-  <canvas id="ocean" aria-hidden="true"></canvas>
-  <div class="beacon" aria-hidden="true">
-    <div class="beam-wedge"></div>
-    <svg class="lh" width="120" height="150" viewBox="0 0 60 76" fill="none">
-      <path d="M22 28h16l5 44H17l5-44Z" fill="#101010" stroke="#3B3B3B"/>
-      <rect x="20" y="22" width="20" height="7" rx="1.5" fill="#1B1B1B" stroke="#3B3B3B" stroke-width=".6"/>
-      <rect x="23" y="14" width="14" height="8" rx="1" fill="#F5F5F5"/>
-      <path d="M30 4l8 10H22l8-10Z" fill="#1B1B1B" stroke="#3B3B3B" stroke-width=".6"/>
-      <circle cx="30" cy="18" r="2.4" fill="#070707"/>
-    </svg>
-  </div>
+  <img class="hero-photo" src="assets/farol.jpg" alt="Farol noturno varrendo o mar escuro com o facho branco, revelando barquinhos de papel à deriva" fetchpriority="high">
+  <div class="hero-veil" aria-hidden="true"></div>
   <div class="wrap hero-in">
     <h1 class="rise">Todo dia, leads afundam no seu WhatsApp. <em>Nesta ilha, nenhum se perde.</em></h1>
     <p class="hero-sub rise">A Lead Island coloca um <b>funcionário de IA</b> no seu número: ele qualifica cada lead na hora, calcula pela <b>sua</b> tabela sem inventar nada, <b>não desiste de quem some</b> — e chama você na hora certa de fechar.</p>
@@ -513,6 +505,8 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
 </section>
 
 <section class="statement" aria-label="Nenhum lead se perde">
+  <img class="bg-photo" src="assets/flotilha.jpg" alt="" loading="lazy" aria-hidden="true">
+  <div class="bg-veil" aria-hidden="true"></div>
   <p>Nenhum lead<br>se perde.</p>
 </section>
 
@@ -661,6 +655,8 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
 </section>
 
 <section class="final">
+  <img class="bg-photo" src="assets/loja.jpg" alt="" loading="lazy" aria-hidden="true">
+  <div class="bg-veil" aria-hidden="true"></div>
   <div class="wrap">
     <h2>Traga seus leads <em>pra terra firme.</em></h2>
     <div>
@@ -742,60 +738,6 @@ const fleetIO = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.4 });
 fleetIO.observe(flotilla);
-
-(async () => {
-  const cv = document.getElementById('ocean');
-  if (calm || !matchMedia('(min-width:900px)').matches || !cv) { cv && cv.remove(); return; }
-  try {
-    const THREE = await import('https://unpkg.com/three@0.160.0/build/three.module.js');
-    const renderer = new THREE.WebGLRenderer({ canvas: cv, alpha: true, antialias: true });
-    renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
-    const scene = new THREE.Scene();
-    scene.fog = new THREE.Fog(0x070707, 12, 95);
-    const cam = new THREE.PerspectiveCamera(55, 2, 0.1, 200);
-    cam.position.set(0, 6, 26);
-    cam.lookAt(0, 0, -40);
-    const geo = new THREE.PlaneGeometry(260, 150, 110, 60);
-    const mat = new THREE.MeshBasicMaterial({ color: 0x3B3B3B, wireframe: true, transparent: true, opacity: .5 });
-    const sea = new THREE.Mesh(geo, mat);
-    sea.rotation.x = -Math.PI / 2;
-    scene.add(sea);
-    const pos = geo.attributes.position;
-    const base = pos.array.slice();
-    const setSize = () => {
-      const w = cv.clientWidth, h = cv.clientHeight;
-      renderer.setSize(w, h, false);
-      cam.aspect = w / h;
-      cam.updateProjectionMatrix();
-    };
-    setSize();
-    addEventListener('resize', setSize, { passive: true });
-    let visible = false, running = false, t = 0, started = false;
-    const frame = () => {
-      if (!running) return;
-      t += 0.012;
-      for (let i = 0; i < pos.count; i++) {
-        const x = base[i * 3], y = base[i * 3 + 1];
-        pos.array[i * 3 + 2] =
-          Math.sin(x * 0.14 + t) * Math.cos(y * 0.11 + t * 0.8) * 1.6 +
-          Math.sin(y * 0.05 + t * 0.5) * 0.8;
-      }
-      pos.needsUpdate = true;
-      renderer.render(scene, cam);
-      if (!started) { started = true; cv.classList.add('on'); }
-      requestAnimationFrame(frame);
-    };
-    const sync = () => {
-      const should = visible && !document.hidden;
-      if (should && !running) { running = true; frame(); }
-      else if (!should) { running = false; }
-    };
-    new IntersectionObserver(([e]) => { visible = e.isIntersecting; sync(); }).observe(cv);
-    document.addEventListener('visibilitychange', sync);
-  } catch (e) {
-    cv.remove();
-  }
-})();
 
 addEventListener('scroll', () => {
   const d = document.getElementById('depth');
