@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lead Island — Design System v1</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 30'%3E%3Crect width='26' height='30' rx='6' fill='%23070707'/%3E%3Cpath d='M10 12h6l1.6 13H8.4L10 12Z' fill='%23F5F5F5'/%3E%3Crect x='9' y='8.5' width='8' height='3.5' rx='1' fill='%23F5F5F5' opacity='.6'/%3E%3Cpath d='M13 2.5l3.4 4.5H9.6L13 2.5Z' fill='%23F5F5F5'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,600&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#070707;--ink-2:#0D0D0D;--panel:#101010;--paper:#F5F5F5;--gray:#A8A8A8;--dim:#585858;
+  --hair:#232323;--hair-strong:#3B3B3B;--wa:#25D366;--wa-ink:#04140A;
+  --fs-xs:12px;--fs-sm:13.5px;--fs-md:15px;--fs-body:17px;--fs-h4:20px;--fs-h3:24px;
+  --fs-h2:clamp(30px,4vw,44px);--fs-h1:clamp(40px,7.2vw,94px);--fs-giant:clamp(56px,10vw,150px);
+  --s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:24px;--s6:32px;--s7:48px;--s8:64px;--s9:96px;
+  --r-sm:8px;--r-md:12px;--r-lg:18px;--r-xl:28px;--r-pill:999px;
+  --serif:"Fraunces",Georgia,serif;--sans:"Archivo",sans-serif;--mono:"IBM Plex Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--ink);color:var(--paper);font-family:var(--sans);font-size:var(--fs-body);line-height:1.7}
+a{color:var(--paper);text-underline-offset:3px}
+.wrap{max-width:980px;margin:0 auto;padding:var(--s8) var(--s5)}
+h1{font-family:var(--serif);font-weight:700;font-size:var(--fs-h2);margin-bottom:var(--s2)}
+h1 em{font-style:italic}
+.sub{color:var(--gray);max-width:60ch;margin-bottom:var(--s7)}
+h2{font-family:var(--serif);font-weight:600;font-size:var(--fs-h3);margin:var(--s8) 0 var(--s4);padding-top:var(--s5);border-top:1px solid var(--hair)}
+h3{font-family:var(--mono);font-weight:500;font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:2px;color:var(--gray);margin:var(--s5) 0 var(--s3)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:var(--s3)}
+.swatch{border:1px solid var(--hair);border-radius:var(--r-md);overflow:hidden}
+.swatch .c{height:64px}
+.swatch .l{padding:var(--s2) var(--s3);font-family:var(--mono);font-size:var(--fs-xs);color:var(--gray);display:flex;justify-content:space-between;gap:var(--s2)}
+.swatch .l b{color:var(--paper);font-weight:500}
+.type-row{display:flex;align-items:baseline;gap:var(--s5);padding:var(--s3) 0;border-bottom:1px dashed var(--hair)}
+.type-row code{font-family:var(--mono);font-size:var(--fs-xs);color:var(--dim);min-width:150px}
+.sp{display:flex;align-items:center;gap:var(--s4);padding:var(--s1) 0}
+.sp i{display:block;height:14px;background:var(--paper);border-radius:2px}
+.sp code{font-family:var(--mono);font-size:var(--fs-xs);color:var(--gray);min-width:90px}
+.rrow{display:flex;gap:var(--s4);flex-wrap:wrap}
+.rr{width:96px;height:64px;border:1px solid var(--hair-strong);background:var(--panel);display:flex;align-items:flex-end;justify-content:center;padding-bottom:var(--s2);font-family:var(--mono);font-size:var(--fs-xs);color:var(--gray)}
+.row{display:flex;gap:var(--s3);flex-wrap:wrap;align-items:center;margin:var(--s3) 0}
+.btn{display:inline-flex;align-items:center;gap:var(--s2);background:var(--wa);color:var(--wa-ink);font-weight:600;font-size:var(--fs-md);padding:var(--s3) var(--s5);border-radius:var(--r-md);text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.45)}
+.btn.paper{background:var(--paper);color:var(--ink);box-shadow:none}
+.btn-ghost{color:var(--paper);text-decoration:none;font-weight:500;font-size:var(--fs-md);border-bottom:1px solid var(--paper);padding-bottom:2px}
+.chip{background:none;border:1px solid var(--hair-strong);color:var(--paper);font-size:var(--fs-sm);padding:var(--s3) var(--s4);border-radius:var(--r-pill);cursor:pointer}
+.badge{font-size:var(--fs-xs);font-weight:600;padding:3px var(--s3);border-radius:var(--r-pill)}
+.badge.ia{border:1px solid var(--wa);color:var(--wa)}
+.badge.farol{background:var(--paper);color:var(--ink)}
+.badge.hum{border:1px solid var(--gray);color:var(--paper)}
+.badge.esc{border:1px solid var(--dim);color:var(--gray)}
+.bub{max-width:340px;padding:var(--s3) var(--s4);border-radius:var(--r-md);font-size:var(--fs-md);line-height:1.55;margin-bottom:var(--s3)}
+.d-agent{background:var(--ink-2);border:1px solid var(--hair);border-bottom-left-radius:var(--s1)}
+.d-user{background:rgba(37,211,102,.09);border:1px solid rgba(37,211,102,.35);color:#B8EACB;border-bottom-right-radius:var(--s1)}
+.d-farol{background:var(--paper);color:var(--ink);border-bottom-left-radius:var(--s1);font-weight:500}
+.rules{list-style:none;max-width:640px}
+.rules li{padding:var(--s3) 0;border-bottom:1px dashed var(--hair);color:var(--gray);font-size:var(--fs-md)}
+.rules b{color:var(--paper);font-weight:500}
+.rules .no{color:var(--dim);text-decoration:line-through}
+code.tok{font-family:var(--mono);font-size:var(--fs-xs);background:var(--panel);border:1px solid var(--hair);border-radius:var(--s1);padding:2px 6px;color:var(--gray)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p style="font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:2px;color:var(--dim);margin-bottom:var(--s3)">LEAD ISLAND · DESIGN SYSTEM · V1</p>
+  <h1>O sistema por trás da <em>ilha</em>.</h1>
+  <p class="sub">Uma cor funcional, uma escala de tipo, uma régua de espaço. Tudo que se desenha na Lead Island obedece aos tokens desta página — se um valor não está aqui, ele não entra no produto. <a href="index.html">← voltar ao site</a></p>
+
+  <h2>Cor</h2>
+  <p class="sub" style="margin-bottom:var(--s4)">Monocromático neutro (R=G=B, sempre). O verde existe apenas onde significa WhatsApp: CTAs de conversa e o badge "IA ativa".</p>
+  <div class="grid">
+    <div class="swatch"><div class="c" style="background:#070707"></div><div class="l"><b>--ink</b>#070707</div></div>
+    <div class="swatch"><div class="c" style="background:#0D0D0D"></div><div class="l"><b>--ink-2</b>#0D0D0D</div></div>
+    <div class="swatch"><div class="c" style="background:#101010"></div><div class="l"><b>--panel</b>#101010</div></div>
+    <div class="swatch"><div class="c" style="background:#232323"></div><div class="l"><b>--hair</b>#232323</div></div>
+    <div class="swatch"><div class="c" style="background:#3B3B3B"></div><div class="l"><b>--hair-strong</b>#3B3B3B</div></div>
+    <div class="swatch"><div class="c" style="background:#585858"></div><div class="l"><b>--dim</b>#585858</div></div>
+    <div class="swatch"><div class="c" style="background:#A8A8A8"></div><div class="l"><b>--gray</b>#A8A8A8</div></div>
+    <div class="swatch"><div class="c" style="background:#F5F5F5"></div><div class="l"><b>--paper</b>#F5F5F5</div></div>
+    <div class="swatch"><div class="c" style="background:#25D366"></div><div class="l"><b>--wa</b>#25D366</div></div>
+  </div>
+
+  <h2>Tipografia</h2>
+  <p class="sub" style="margin-bottom:var(--s4)">Três vozes: Fraunces (display — a marca fala), Archivo (corpo — o produto explica), IBM Plex Mono (dados — números, horários e labels técnicos; nunca como fantasia).</p>
+  <div class="type-row"><code>--fs-giant · Fraunces it</code><span style="font-family:var(--serif);font-style:italic;font-weight:600;font-size:44px">Nenhum lead se perde.</span></div>
+  <div class="type-row"><code>--fs-h1 · Fraunces 700</code><span style="font-family:var(--serif);font-weight:700;font-size:34px">Todo dia, leads afundam.</span></div>
+  <div class="type-row"><code>--fs-h2 · Fraunces 600</code><span style="font-family:var(--serif);font-weight:600;font-size:30px">A rota de um lead pela ilha</span></div>
+  <div class="type-row"><code>--fs-h3 · Fraunces 600</code><span style="font-family:var(--serif);font-weight:600;font-size:24px">O funcionário formado na ilha</span></div>
+  <div class="type-row"><code>--fs-h4 · Fraunces 600</code><span style="font-family:var(--serif);font-weight:600;font-size:20px">Farol</span></div>
+  <div class="type-row"><code>--fs-body · Archivo 400</code><span style="font-size:17px">O corpo do texto explica o produto com calma.</span></div>
+  <div class="type-row"><code>--fs-md · Archivo 400</code><span style="font-size:15px;color:var(--gray)">Texto de componente: listas, cartões, respostas.</span></div>
+  <div class="type-row"><code>--fs-sm · Archivo 400</code><span style="font-size:13.5px;color:var(--gray)">Legendas, notas e microcopy.</span></div>
+  <div class="type-row"><code>--fs-xs · Plex Mono</code><span style="font-family:var(--mono);font-size:12px;letter-spacing:1.5px;color:var(--gray)">LABELS · 08:52 · 47 CONVERSAS</span></div>
+
+  <h2>Espaço</h2>
+  <p class="sub" style="margin-bottom:var(--s4)">Base 4px. Grupos apertados, seções generosas — nada entre um valor e outro.</p>
+  <div class="sp"><code>--s1 · 4px</code><i style="width:4px"></i></div>
+  <div class="sp"><code>--s2 · 8px</code><i style="width:8px"></i></div>
+  <div class="sp"><code>--s3 · 12px</code><i style="width:12px"></i></div>
+  <div class="sp"><code>--s4 · 16px</code><i style="width:16px"></i></div>
+  <div class="sp"><code>--s5 · 24px</code><i style="width:24px"></i></div>
+  <div class="sp"><code>--s6 · 32px</code><i style="width:32px"></i></div>
+  <div class="sp"><code>--s7 · 48px</code><i style="width:48px"></i></div>
+  <div class="sp"><code>--s8 · 64px</code><i style="width:64px"></i></div>
+  <div class="sp"><code>--s9 · 96px</code><i style="width:96px"></i></div>
+  <div class="sp"><code>--s10 · 144px</code><i style="width:144px"></i></div>
+
+  <h2>Raio</h2>
+  <div class="rrow">
+    <div class="rr" style="border-radius:8px">--r-sm 8</div>
+    <div class="rr" style="border-radius:12px">--r-md 12</div>
+    <div class="rr" style="border-radius:18px">--r-lg 18</div>
+    <div class="rr" style="border-radius:28px">--r-xl 28</div>
+    <div class="rr" style="border-radius:999px;width:140px">--r-pill</div>
+  </div>
+  <p class="sub" style="margin-top:var(--s4)">Botões e bolhas <code class="tok">--r-md</code> · cartões <code class="tok">--r-lg</code> · telefone/molduras <code class="tok">--r-xl</code> · chips e badges <code class="tok">--r-pill</code>.</p>
+
+  <h2>Componentes</h2>
+  <h3>Botões</h3>
+  <div class="row">
+    <a class="btn" href="#">Falar com o funcionário de IA</a>
+    <a class="btn paper" href="#">Ação na navegação</a>
+    <a class="btn-ghost" href="#">Ação secundária</a>
+  </div>
+  <p class="sub">Verde = abre conversa no WhatsApp, sem exceção. Na navegação o botão é papel (o verde no menu compete com o CTA do herói).</p>
+  <h3>Chips de resposta</h3>
+  <div class="row"><button class="chip">iPhone 15</button><button class="chip">Tenho um iPhone 12</button><button class="chip" style="background:var(--wa);border-color:var(--wa);color:var(--wa-ink);font-weight:600">Falar com o de verdade</button></div>
+  <h3>Badges de estado</h3>
+  <div class="row"><span class="badge ia">IA ativa</span><span class="badge farol">resgatado pelo farol</span><span class="badge hum">humano ativo</span><span class="badge esc">escalado</span></div>
+  <h3>Bolhas de conversa</h3>
+  <div style="display:flex;flex-direction:column;max-width:380px">
+    <div class="bub d-agent">Agente: fundo tinta, borda fina, canto de fala.</div>
+    <div class="bub d-user" style="align-self:flex-end">Você (lead): tinta de verde a 9%.</div>
+    <div class="bub d-farol">Farol: papel sobre tinta — o momento de luz.</div>
+  </div>
+
+  <h2>Regras</h2>
+  <ul class="rules">
+    <li><b>Cinza é neutro.</b> R=G=B sempre — cinza esverdeado ou azulado é defeito.</li>
+    <li><b>Texto pequeno (&lt;15px) nunca em <code class="tok">--dim</code></b> — contraste mínimo 4.5:1.</li>
+    <li><b>Sombras são neutras</b>, com deslocamento e blur. <span class="no">Glow colorido</span> não existe aqui.</li>
+    <li><b>Um momento de movimento por tela</b> — o farol é o dono da animação; o resto responde ao usuário.</li>
+    <li><b>Mono é para dado real</b> (horário, contagem, label) — <span class="no">mono como fantasia "tech"</span> não.</li>
+    <li><b>Ícones são SVG desenhado</b>, traço 1.6–2.2 — <span class="no">emoji como ícone</span> não.</li>
+    <li><b>Demonstração se declara demonstração.</b> Nenhum número finge ser produção.</li>
+    <li><b>Todo valor novo entra primeiro aqui</b> — depois no produto.</li>
+  </ul>
+
+  <p style="margin-top:var(--s8);padding-top:var(--s5);border-top:1px solid var(--hair);font-family:var(--mono);font-size:var(--fs-xs);color:var(--dim);letter-spacing:1px">鉄心 · LEAD ISLAND DS·V1 · <a href="index.html" style="color:var(--gray)">index</a></p>
+</div>
+</body>
+</html>
