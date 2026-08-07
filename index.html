@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lead Island — a ilha onde nenhum lead se perde</title>
+<title>Lead Island — funcionário de IA no WhatsApp: nenhum lead fica sem resposta</title>
 <meta name="description" content="Um funcionário de IA no seu WhatsApp: qualifica leads, calcula pela sua tabela sem inventar, não desiste de quem some e chama você na hora de fechar.">
 <meta name="theme-color" content="#070707">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 30'%3E%3Crect width='26' height='30' rx='6' fill='%23070707'/%3E%3Cpath d='M10 12h6l1.6 13H8.4L10 12Z' fill='%23F4F4F1'/%3E%3Crect x='9' y='8.5' width='8' height='3.5' rx='1' fill='%23F4F4F1' opacity='.6'/%3E%3Cpath d='M13 2.5l3.4 4.5H9.6L13 2.5Z' fill='%23F4F4F1'/%3E%3C/svg%3E">
@@ -284,6 +284,8 @@ h2{font-family:var(--serif);font-weight:600;font-size:var(--fs-h2);line-height:v
 .plan ul{margin-top:var(--s4);list-style:none}
 .plan li{font-size:var(--fs-md);color:var(--gray);padding:var(--s2) 0;border-bottom:1px dashed var(--hair)}
 .plan li:last-child{border:none}
+.plans-roi{margin-top:var(--s5);font-family:var(--serif);font-style:italic;font-size:var(--fs-h4);line-height:1.5;color:var(--paper);max-width:680px}
+.plans-roi em{font-style:normal;border-bottom:1px solid var(--wa)}
 .founder-offer{margin-top:var(--s5);max-width:820px;border:1px solid var(--paper);border-radius:var(--r-lg);padding:var(--s5) var(--s6)}
 .founder-offer h3{font-family:var(--serif);font-size:var(--fs-h4);font-weight:600;margin-bottom:var(--s2)}
 .founder-offer p{font-size:var(--fs-md);color:var(--gray);max-width:660px}
@@ -450,7 +452,7 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
     <span class="cap" aria-hidden="true">CAP. 01 · A NOITE</span>
     <div class="wrap hero-in">
     <h1 class="rise">Todo dia, leads afundam no seu WhatsApp. <em>Nesta ilha, nenhum se perde.</em></h1>
-    <p class="hero-sub rise">A Lead Island coloca um <b>funcionário de IA</b> no seu número: ele qualifica cada lead na hora, calcula pela <b>sua</b> tabela sem inventar nada, <b>não desiste de quem some</b> — e chama você na hora certa de fechar.</p>
+    <p class="hero-sub rise">A Lead Island coloca um <b>funcionário de IA</b> no seu número: ele qualifica cada lead na hora, calcula pela <b>sua</b> tabela sem inventar nada, <b>não desiste de quem some</b> — e chama você na hora de fechar.</p>
     <div class="hero-cta rise">
       <a class="btn" href="https://wa.me/5500000000000?text=Oi!%20Quero%20conhecer%20a%20Lead%20Island" target="_blank" rel="noopener">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.1-4.7-4-4.9-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5s.8 1.9.8 2c.1.1.1.3 0 .5l-.4.6c-.2.2-.3.4-.1.7.2.3.8 1.4 1.8 2.2 1.2 1.1 2.3 1.4 2.6 1.6.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.1.1.7-.2 1.2Z"/></svg>
@@ -492,9 +494,29 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
 
 
 
+<section id="demo">
+  <div class="wrap story">
+    <div class="story-txt">
+      <h2>Não acredite em site. Converse com o funcionário.</h2>
+      <p class="lead-p">Você é o lead agora: escolha as respostas aí do lado e atravesse o funil da loja de demonstração. E faça um favor a você mesmo — <b>escolha "vou pensar…" quando aparecer</b>. É no seu sumiço que o funcionário mostra a que veio.</p>
+      <p class="big-q">"A demonstração não é um vídeo. É você dentro dela."</p>
+    </div>
+    <div class="phone" style="padding:0;overflow:hidden">
+      <div class="dm-log" id="dmlog" aria-live="polite"></div>
+      <div class="chips" id="dmchips"></div>
+    </div>
+  </div>
+</section>
+
+<section class="statement" aria-label="Nenhum lead se perde">
+  <img class="bg-photo" src="assets/flotilha.jpg" alt="" loading="lazy" aria-hidden="true">
+  <div class="bg-veil" aria-hidden="true"></div>
+  <p>Nenhum lead<br>se perde.</p>
+</section>
+
 <section id="duelo">
   <div class="wrap">
-    <h2>A rua está cheia de robôs à venda. Nós formamos funcionários.</h2>
+    <h2>Todo mundo vende robô. Nós formamos funcionários.</h2>
     <div class="duel">
       <div class="duel-card">
         <h3>O robô que todo mundo vende</h3>
@@ -520,7 +542,7 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
 
 <section id="mapa">
   <div class="wrap">
-    <h2>A rota de um lead pela ilha.</h2>
+    <h2>A rota de um lead pela ilha: do anúncio ao seu CRM, sem buraco no caminho.</h2>
     <div class="route">
       <div class="stop"><h4>Porto</h4><p>Seu lead chega por anúncio, site ou indicação — e é recebido na hora, de madrugada inclusive.</p></div>
       <div class="stop"><h4>Trilhos</h4><p>O agente conversa seguindo o funil que você definiu: qualifica, coleta, calcula.</p></div>
@@ -573,25 +595,7 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
   </div>
 </section>
 
-<section id="demo">
-  <div class="wrap story">
-    <div class="story-txt">
-      <h2>Não acredite em site. Converse com um.</h2>
-      <p class="lead-p">Você é o lead agora: escolha as respostas aí do lado e atravesse o funil da loja de demonstração. E faça um favor a você mesmo — <b>escolha "vou pensar…" quando aparecer</b>. É no seu sumiço que o funcionário mostra a que veio.</p>
-      <p class="big-q">"A demonstração não é um vídeo. É você dentro dela."</p>
-    </div>
-    <div class="phone" style="padding:0;overflow:hidden">
-      <div class="dm-log" id="dmlog" aria-live="polite"></div>
-      <div class="chips" id="dmchips"></div>
-    </div>
-  </div>
-</section>
 
-<section class="statement" aria-label="Nenhum lead se perde">
-  <img class="bg-photo" src="assets/flotilha.jpg" alt="" loading="lazy" aria-hidden="true">
-  <div class="bg-veil" aria-hidden="true"></div>
-  <p>Nenhum lead<br>se perde.</p>
-</section>
 
 <section id="nichos">
   <div class="wrap">
@@ -611,7 +615,7 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
         <img class="ph" src="assets/nicho-energia.jpg" alt="" loading="lazy" aria-hidden="true">
         <h4>Energia por assinatura</h4>
         <div>
-          <p>Qualificação pela conta de luz, coleta de documentos e handoff — do anúncio à proposta.</p>
+          <p>Qualificação pela conta de luz, coleta de documentos e entrega pro seu vendedor — do anúncio à proposta.</p>
           <p class="say">"Com R$ 240 por mês, sua economia fica em torno de R$ 430 por ano. Me manda uma foto da conta?"</p>
         </div>
         <span class="tag on">funil pronto</span>
@@ -669,7 +673,7 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
 
 <section id="planos">
   <div class="wrap">
-    <h2>Simples como deve ser.</h2>
+    <h2>Um setup, uma mensalidade. Sem fidelidade.</h2>
     <div class="plans">
       <div class="plan">
         <p class="tag-p">Chegada à ilha</p>
@@ -690,13 +694,14 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
           <li>Funcionário de IA atendendo 24/7</li>
           <li>Farol: follow-up automático e inteligente</li>
           <li>Torre: painel ao vivo com handoff humano</li>
-          <li>Melhorias contínuas do funil</li>
+          <li>A gente segue afinando seu funil, todo mês</li>
         </ul>
       </div>
     </div>
+    <p class="plans-roi">R$ 397 por mês é menos que <em>um dia</em> de atendente — e ele trabalha os 30, de madrugada inclusive. Um único lead resgatado costuma pagar o mês; a conta você acompanha na sua Torre.</p>
     <div class="founder-offer">
       <h3>Condição de fundador — 5 vagas</h3>
-      <p>Os cinco primeiros negócios da ilha levam <b>setup fixo de R$ 1.500</b> (qualquer complexidade), <b>preço travado por 12 meses</b> e o WhatsApp direto dos fundadores. Em troca, pedimos o que todo começo pede: feedback de verdade e, se a ilha entregar, permissão pra contar seu caso com números. Sem fidelidade — se não resgatar lead, cancele.</p>
+      <p>Os cinco primeiros negócios da ilha levam <b>setup fixo de R$ 1.500</b> (seja qual for o tamanho do seu funil), <b>preço travado por 12 meses</b> e o WhatsApp direto dos fundadores. Em troca, pedimos o que todo começo pede: feedback de verdade e, se a ilha entregar, permissão pra contar seu caso com números. Sem fidelidade — se não resgatar lead, cancele.</p>
     </div>
   </div>
 </section>
@@ -731,7 +736,15 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
       </details>
       <details>
         <summary>E a LGPD?</summary>
-        <p>Consentimento explícito no funil, dados guardados só com finalidade declarada, opt-out por mensagem e trilha de auditoria completa. Nascemos com a lei dentro de casa.</p>
+        <p>Consentimento explícito no funil, dados guardados só com finalidade declarada, o cliente sai quando quiser com uma mensagem, e tudo fica registrado pra auditoria. Nascemos com a lei dentro de casa.</p>
+      </details>
+      <details>
+        <summary>Meu ramo não está na lista. Ainda dá?</summary>
+        <p>Dá. Os funis prontos aceleram, mas o processo é o mesmo: uma conversa de 20 minutos sobre o seu funil e a sua tabela, e montamos o seu. E se o seu ramo não fizer sentido pro produto, a gente fala na cara — melhor que te vender frustração.</p>
+      </details>
+      <details>
+        <summary>E se o cliente mandar áudio?</summary>
+        <p>Ele entende. Muita gente prefere falar a digitar — principalmente pra ditar dados — e o funcionário transcreve e segue o funil normalmente.</p>
       </details>
       <details>
         <summary>Em quanto tempo fico no ar?</summary>
@@ -752,7 +765,7 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
         Falar com o funcionário de IA
       </a>
     </div>
-    <p class="micro">Atendimento imediato, de madrugada inclusive. <span>Vontade de ferro.</span></p>
+    <p class="micro">Atendimento imediato, de madrugada inclusive. Sem formulário, sem "agende uma call" — <span>a conversa começa agora, com ele.</span></p>
   </div>
 </section>
 
@@ -762,7 +775,7 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
 <div id="rescue-msg" role="dialog" aria-label="Resgate completo">
   <button class="close" type="button" aria-label="Fechar">&#10005;</button>
   <h3>7 de 7 — todos resgatados.</h3>
-  <p>Você acabou de fazer com o mouse o que o nosso funcionário faz com os seus leads, todos os dias: não deixou nenhum no escuro.</p>
+  <p>Você acabou de fazer com o mouse o que o funcionário faz todo dia com os seus leads: não deixou nenhum no escuro.</p>
   <a class="btn" href="https://wa.me/5500000000000?text=Oi!%20Resgatei%20os%207%20barquinhos%20e%20quero%20isso%20pros%20meus%20leads" target="_blank" rel="noopener">Quero isso pros meus leads</a>
 </div>
 <footer>
@@ -960,7 +973,7 @@ addEventListener('scroll', () => {
 }, { passive: true });
 
 const DEMO = {
-  q1:      { msg: 'Boa tarde! Sou o funcionário de IA da loja. Qual iPhone você está procurando?', chips: [['iPhone 15', 'q2'], ['iPhone 13', 'q2']] },
+  q1:      { msg: 'Oi! Sou o funcionário de IA da Loja do Roberto. Qual iPhone você procura?', chips: [['iPhone 15', 'q2'], ['iPhone 13', 'q2']] },
   q2:      { msg: 'Boa escolha. Você tem um aparelho pra dar de entrada?', chips: [['Tenho um iPhone 12', 'q3'], ['Não tenho', 'price2']] },
   q3:      { msg: 'Me conta rapidinho: como estão a tela e a bateria dele?', chips: [['Tela ok, bateria 85%', 'price1'], ['Tela trincada…', 'price1b']] },
   price1:  { msg: 'Consultei a tabela da loja: seu iPhone 12 entra por R$ 1.615. O iPhone 15 fica em R$ 2.384 pra você. Quer que eu reserve?', chips: [['Quero!', 'close'], ['Vou pensar…', 'ghost']] },
@@ -968,7 +981,8 @@ const DEMO = {
   price2:  { msg: 'Sem problema! O iPhone 15 está R$ 3.999, à vista ou em até 12x. Quer que eu deixe um reservado?', chips: [['Quero!', 'close'], ['Vou pensar…', 'ghost']] },
   ghost:   { note: '— você fechou o WhatsApp e foi viver sua vida —', then: 'ghost2' },
   ghost2:  { note: '4 horas depois…', then: 'farol', slow: true },
-  farol:   { farol: true, msg: 'Oi! Sua avaliação continua válida por 3 dias — e o iPhone que você queria segue disponível. Vamos fechar? Posso deixar separado pra hoje às 18h.', chips: [['Fechou, bora!', 'close2']] },
+  farol:   { farol: true, msg: 'Oi! Sua avaliação continua válida por 3 dias — e o iPhone que você queria segue disponível. Vamos fechar? Posso deixar separado pra hoje às 18h.', chips: [['Fechou, bora!', 'close2'], ['Ainda não…', 'farol2']] },
+  farol2:  { msg: 'Tranquilo, sem pressão — sua avaliação fica guardada por 3 dias e eu não vou ficar te cutucando. Se mudar de ideia, é só me chamar por aqui.', end: true },
   close:   { msg: 'Feito, reservado! Te passei pro vendedor humano com todo o histórico — ninguém vai te perguntar nada duas vezes. (Psiu: rode de novo e escolha "vou pensar…" pra ver o farol trabalhar.)', end: true },
   close2:  { msg: 'Feito, reservado! Te passei pro vendedor humano com todo o histórico. Você sumiu — e mesmo assim não se perdeu. Isso foi o farol.', end: true }
 };
