@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Você se perdeu no mar — Lead Island</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 30'%3E%3Crect width='26' height='30' rx='6' fill='%23070707'/%3E%3Cpath d='M10 12h6l1.6 13H8.4L10 12Z' fill='%23F5F5F5'/%3E%3Crect x='9' y='8.5' width='8' height='3.5' rx='1' fill='%23F5F5F5' opacity='.6'/%3E%3Cpath d='M13 2.5l3.4 4.5H9.6L13 2.5Z' fill='%23F5F5F5'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{min-height:100svh;background:#070707;color:#F5F5F5;font-family:"Archivo",sans-serif;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
+.veil{position:absolute;inset:0;background:radial-gradient(75% 75% at 50% 52%,rgba(7,7,7,.15),rgba(7,7,7,.9))}
+.in{position:relative;z-index:2;text-align:center;padding:24px;max-width:640px}
+.code{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:3px;color:#585858;margin-bottom:16px}
+h1{font-family:"Fraunces",serif;font-weight:700;font-size:clamp(38px,7vw,72px);line-height:1.06;letter-spacing:-1px}
+h1 em{font-style:italic;color:#A8A8A8;display:block;font-weight:600}
+p{margin:22px auto 34px;color:#A8A8A8;max-width:44ch;line-height:1.7}
+.btn{display:inline-flex;align-items:center;gap:9px;background:#F5F5F5;color:#070707;font-weight:600;font-size:15.5px;padding:14px 26px;border-radius:12px;text-decoration:none;transition:transform .18s,box-shadow .18s;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.btn:hover{transform:translateY(-2px)}
+.mono{margin-top:28px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:2px;color:#3B3B3B}
+@media (prefers-reduced-motion: no-preference){
+  .bg{animation:drift 24s ease-in-out infinite alternate;transform-origin:50% 60%}
+  @keyframes drift{from{transform:scale(1)}to{transform:scale(1.07)}}
+}
+</style>
+</head>
+<body>
+<img class="bg" src="assets/barco.jpg" alt="">
+<div class="veil"></div>
+<div class="in">
+  <p class="code">ERRO 404 · CARTA NÁUTICA NÃO ENCONTRADA</p>
+  <h1>Você se perdeu no mar. <em>Acontece com os melhores leads.</em></h1>
+  <p>A página que você procurava afundou, mudou de rota ou nunca existiu. Mas relaxa — é exatamente pra isso que existe um farol.</p>
+  <a class="btn" href="/leadisland-site/">O farol te leva de volta →</a>
+  <p class="mono">LEAD ISLAND · NENHUM VISITANTE SE PERDE</p>
+</div>
+</body>
+</html>
