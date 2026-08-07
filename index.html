@@ -262,14 +262,15 @@ h2{font-family:var(--serif);font-weight:600;font-size:var(--fs-h2);line-height:v
 
 /* ---- manifesto de baralhos ---- */
 .manifest{margin-top:var(--s7);border-top:1px solid var(--hair);max-width:820px}
-.manifest li{list-style:none;display:grid;grid-template-columns:auto 1fr auto;gap:var(--s5);align-items:baseline;padding:var(--s5) var(--s1);border-bottom:1px solid var(--hair);transition:background .2s}
+.manifest li{list-style:none;display:grid;grid-template-columns:96px auto 1fr auto;gap:var(--s5);align-items:center;padding:var(--s5) var(--s1);border-bottom:1px solid var(--hair);transition:background .2s}
+.manifest .ph{width:96px;height:96px;object-fit:cover;border-radius:var(--r-md);border:1px solid var(--hair-strong);filter:grayscale(1)}
 .manifest li:hover{background:rgba(245,245,245,.015)}
 .manifest h4{font-family:var(--serif);font-size:var(--fs-h4);font-weight:600;min-width:230px}
 .manifest p{font-size:var(--fs-md);color:var(--gray)}
 .manifest .tag{font-size:var(--fs-xs);font-weight:500;letter-spacing:1px;text-transform:uppercase;padding:var(--s1) var(--s3);border-radius:var(--r-pill);white-space:nowrap;font-family:var(--mono)}
 .tag.on{border:1px solid var(--paper);color:var(--paper)}
 .tag.forming{border:1px solid var(--hair-strong);color:var(--gray)}
-@media(max-width:640px){.manifest li{grid-template-columns:1fr;gap:var(--s2)}.manifest h4{min-width:0}}
+@media(max-width:640px){.manifest li{grid-template-columns:1fr;gap:var(--s3)}.manifest h4{min-width:0}.manifest .ph{width:100%;height:140px}}
 
 /* ---- planos ---- */
 .plans{display:grid;grid-template-columns:1fr 1fr;gap:var(--s5);margin-top:var(--s7);max-width:820px}
@@ -324,6 +325,8 @@ h2{font-family:var(--serif);font-weight:600;font-size:var(--fs-h2);line-height:v
 .final .micro{margin-top:var(--s4)}
 
 /* ---- rodapé ---- */
+.foot-mark{display:flex;justify-content:center;padding:var(--s7) 0 0}
+.foot-mark img{width:88px;height:88px;opacity:.85}
 footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
 .foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s5);flex-wrap:wrap;font-size:var(--fs-sm);color:var(--gray)}
 .foot a{color:var(--gray)}
@@ -516,6 +519,7 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
     <p class="lead-p">Nada de "configure seu prompt". Cada ramo tem um funil pronto — as perguntas, as regras e o jeito de falar do seu mercado — ajustado ao seu negócio em dias.</p>
     <ul class="manifest">
       <li>
+        <img class="ph" src="assets/nicho-celulares.jpg" alt="" loading="lazy" aria-hidden="true">
         <h4>Revenda de celulares</h4>
         <div>
           <p>Avaliação de troca calculada pela sua tabela: modelo, tela, bateria — sem chute e sem prejuízo.</p>
@@ -524,6 +528,7 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
         <span class="tag on">funil pronto</span>
       </li>
       <li>
+        <img class="ph" src="assets/nicho-energia.jpg" alt="" loading="lazy" aria-hidden="true">
         <h4>Energia por assinatura</h4>
         <div>
           <p>Qualificação pela conta de luz, coleta de documentos e handoff — do anúncio à proposta.</p>
@@ -532,6 +537,7 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
         <span class="tag on">funil pronto</span>
       </li>
       <li>
+        <img class="ph" src="assets/nicho-consignado.jpg" alt="" loading="lazy" aria-hidden="true">
         <h4>Crédito consignado</h4>
         <div>
           <p>Coleta guiada e didática de dados e documentos, com consentimento LGPD no fluxo.</p>
@@ -540,6 +546,7 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
         <span class="tag forming">em formação</span>
       </li>
       <li>
+        <img class="ph" src="assets/nicho-clinica.jpg" alt="" loading="lazy" aria-hidden="true">
         <h4>Clínicas e serviços</h4>
         <div>
           <p>Agendamento que confirma, lembra e reagenda — agenda cheia sem telefone tocando.</p>
@@ -669,6 +676,7 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
   </div>
 </section>
 
+<div class="foot-mark" aria-hidden="true"><img src="assets/marca.png" alt="" loading="lazy"></div>
 <footer>
   <div class="wrap foot">
     <div>Lead Island · feito no Brasil</div>
