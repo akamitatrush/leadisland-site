@@ -117,8 +117,8 @@ nav .btn:hover{box-shadow:0 6px 20px rgba(245,245,245,.14)}
 
 /* ---- hero (fotografia real, Ken Burns) ---- */
 header{position:relative;min-height:min(100svh,940px);display:flex;align-items:center;overflow:hidden;border-bottom:1px solid var(--hair)}
-.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 40%;z-index:0;
-  animation:kenburns 26s ease-in-out infinite alternate;transform-origin:62% 42%}
+.hero-photo-wrap{position:absolute;inset:0;z-index:0;overflow:hidden;animation:kenburns 26s ease-in-out infinite alternate;transform-origin:62% 42%}
+.hero-photo{position:absolute;inset:-6% 0;width:100%;height:112%;object-fit:cover;object-position:62% 40%}
 @keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.08)}}
 .hero-veil{position:absolute;inset:0;z-index:1;pointer-events:none;
   background:linear-gradient(90deg,rgba(7,7,7,.9) 0%,rgba(7,7,7,.62) 42%,rgba(7,7,7,.12) 72%,rgba(7,7,7,.3) 100%),
@@ -337,12 +337,48 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
 #depth{position:fixed;left:18px;bottom:22px;z-index:var(--z-hud);font-family:var(--mono);font-size:var(--fs-xs);color:var(--dim);letter-spacing:1.5px;pointer-events:none}
 @media(max-width:1200px){#depth{display:none}}
 
+/* ---- cinema: abertura ---- */
+#intro{position:fixed;inset:0;z-index:200;background:var(--ink);display:flex;align-items:center;justify-content:center;transition:opacity .9s ease}
+#intro.out{opacity:0;pointer-events:none}
+#intro .bar{position:absolute;left:0;right:0;height:11vh;background:#000}
+#intro .bar.t{top:0}#intro .bar.b{bottom:0}
+#intro p{font-family:var(--serif);font-style:italic;font-weight:600;font-size:clamp(28px,5.5vw,72px);letter-spacing:-1px;text-align:center;padding:0 var(--s5);opacity:0;text-wrap:balance}
+#intro p.show{animation:card 1.6s ease forwards}
+@keyframes card{0%{opacity:0;transform:translateY(14px)}18%{opacity:1;transform:none}82%{opacity:1}100%{opacity:0;transform:translateY(-10px)}}
+#intro .skip{position:absolute;bottom:13vh;right:var(--s5);background:none;border:1px solid var(--hair-strong);color:var(--gray);font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:1.5px;padding:var(--s2) var(--s4);border-radius:var(--r-pill);cursor:pointer}
+#intro .skip:hover{color:var(--paper);border-color:var(--paper)}
+
+/* ---- o resgate (jogo do farol) ---- */
+.boat{position:absolute;width:34px;height:24px;z-index:3;opacity:.45;transition:opacity .4s,filter .4s,transform .4s}
+.boat svg{width:100%;height:100%}
+.boat .sail{fill:#1E1E1E;stroke:#3B3B3B;stroke-width:1}
+.boat .hull{fill:#2A2A2A;stroke:#3B3B3B;stroke-width:1}
+.boat.lit{opacity:1;filter:drop-shadow(0 0 14px rgba(245,245,245,.8));transform:scale(1.18)}
+.boat.lit .hull,.boat.lit .sail{fill:var(--paper);stroke:var(--paper)}
+#hud{position:fixed;right:18px;bottom:22px;z-index:60;display:flex;align-items:center;gap:var(--s3);background:rgba(7,7,7,.85);border:1px solid var(--hair-strong);border-radius:var(--r-pill);padding:var(--s2) var(--s4);font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:1.5px;color:var(--gray)}
+#hud b{color:var(--paper)}
+#hud svg{width:18px;height:13px}
+#hud .sail,#hud .hull{fill:var(--paper)}
+#hud.done{border-color:var(--paper);color:var(--paper)}
+#rescue-flash{position:fixed;inset:0;z-index:150;pointer-events:none;background:radial-gradient(60% 60% at 50% 50%,rgba(245,245,245,.32),transparent 70%);opacity:0}
+#rescue-flash.go{animation:rflash 1.1s ease}
+@keyframes rflash{0%{opacity:0}25%{opacity:1}100%{opacity:0}}
+#rescue-msg{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%) scale(.94);z-index:151;background:var(--panel);border:1px solid var(--paper);border-radius:var(--r-lg);padding:var(--s6) var(--s6);text-align:center;max-width:480px;width:calc(100% - 48px);opacity:0;pointer-events:none;transition:opacity .5s,transform .5s}
+#rescue-msg.show{opacity:1;transform:translate(-50%,-50%) scale(1);pointer-events:auto}
+#rescue-msg h3{font-family:var(--serif);font-style:italic;font-size:var(--fs-h3);margin-bottom:var(--s2)}
+#rescue-msg p{font-size:var(--fs-md);color:var(--gray);margin-bottom:var(--s4)}
+#rescue-msg .close{position:absolute;top:10px;right:14px;background:none;border:none;color:var(--gray);font-size:18px;cursor:pointer;padding:4px 8px}
+#rescue-msg .close:hover{color:var(--paper)}
+@media(hover:none),(max-width:900px){.boat,#hud{display:none}}
+
 /* ---- movimento reduzido ---- */
 @media (prefers-reduced-motion: reduce){
   .beam-wedge{animation:none;opacity:.4}
   .rise{animation:none;opacity:1;transform:none}
   .flotilla i{transition:none}
-  .hero-photo{animation:none}
+  .hero-photo-wrap{animation:none}
+  #intro{display:none}
+  .boat{transition:none}
   #torch{display:none}
   .route .stop{opacity:1;transform:none;transition:none}
   .route::before{transform:none;transition:none}
@@ -354,6 +390,11 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
 </head>
 <body>
 <div id="torch" aria-hidden="true"></div>
+<div id="intro" aria-hidden="true">
+  <div class="bar t"></div><div class="bar b"></div>
+  <p id="intro-card"></p>
+  <button class="skip" type="button">pular →</button>
+</div>
 <div id="depth" aria-hidden="true">▾ 0 m</div>
 <a class="skip" href="#conta">Pular para o conteúdo</a>
 
@@ -379,7 +420,7 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
 </nav>
 
 <header>
-  <img class="hero-photo" src="assets/farol.jpg" alt="Farol noturno varrendo o mar escuro com o facho branco, revelando barquinhos de papel à deriva" fetchpriority="high">
+  <div class="hero-photo-wrap" aria-hidden="true"><img class="hero-photo" src="assets/farol.jpg" alt="" fetchpriority="high"></div>
   <div class="hero-veil" aria-hidden="true"></div>
   <div class="wrap hero-in">
     <h1 class="rise">Todo dia, leads afundam no seu WhatsApp. <em>Nesta ilha, nenhum se perde.</em></h1>
@@ -677,6 +718,14 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
 </section>
 
 <div class="foot-mark" aria-hidden="true"><img src="assets/marca.png" alt="" loading="lazy"></div>
+<div id="hud" hidden><svg viewBox="0 0 34 24" aria-hidden="true"><path class="sail" d="M17 1l8 11H9l8-11Z"/><path class="hull" d="M3 14h28l-7 8H10l-7-8Z"/></svg><span><b id="hud-n">0</b>/7 resgatados</span></div>
+<div id="rescue-flash" aria-hidden="true"></div>
+<div id="rescue-msg" role="dialog" aria-label="Resgate completo">
+  <button class="close" type="button" aria-label="Fechar">&#10005;</button>
+  <h3>7 de 7 — todos resgatados.</h3>
+  <p>Você acabou de fazer com o mouse o que o nosso funcionário faz com os seus leads, todos os dias: não deixou nenhum no escuro.</p>
+  <a class="btn" href="https://wa.me/5500000000000?text=Oi!%20Resgatei%20os%207%20barquinhos%20e%20quero%20isso%20pros%20meus%20leads" target="_blank" rel="noopener">Quero isso pros meus leads</a>
+</div>
 <footer>
   <div class="wrap foot">
     <div>Lead Island · feito no Brasil</div>
@@ -726,6 +775,102 @@ if (!calm && counts.length) {
     requestAnimationFrame(tick);
   }, { threshold: 0.4 });
   cntIO.observe(conta);
+}
+
+const intro = document.getElementById('intro');
+if (intro) {
+  if (calm || sessionStorage.getItem('introSeen')) {
+    intro.remove();
+  } else {
+    const cards = ['Toda noite, leads afundam no escuro.', 'Ninguém fica sabendo.', 'Esta é a ilha que os resgata.'];
+    const card = document.getElementById('intro-card');
+    let i = 0, timer = null;
+    const next = () => {
+      if (i >= cards.length) { end(); return; }
+      card.textContent = cards[i++];
+      card.classList.remove('show');
+      void card.offsetWidth;
+      card.classList.add('show');
+      timer = setTimeout(next, 1700);
+    };
+    const end = () => {
+      clearTimeout(timer);
+      sessionStorage.setItem('introSeen', '1');
+      intro.classList.add('out');
+      setTimeout(() => intro.remove(), 1000);
+    };
+    intro.querySelector('.skip').addEventListener('click', end);
+    timer = setTimeout(next, 200);
+  }
+}
+
+if (matchMedia('(hover:hover) and (pointer:fine) and (min-width:900px)').matches && !calm) {
+  const spots = [
+    ['#conta', '87%', '16%'], ['#duelo', '5%', '80%'], ['#mapa', '90%', '12%'],
+    ['#torre', '80%', '84%'], ['#demo', '7%', '10%'], ['#nichos', '92%', '52%'],
+    ['#planos', '5%', '28%']
+  ];
+  const BOAT = '<svg viewBox="0 0 34 24" aria-hidden="true"><path class="sail" d="M17 1l8 11H9l8-11Z"/><path class="hull" d="M3 14h28l-7 8H10l-7-8Z"/></svg>';
+  const boats = spots.map(([sel, left, top]) => {
+    const host = document.querySelector(sel);
+    if (!host) return null;
+    const b = document.createElement('div');
+    b.className = 'boat';
+    b.style.left = left;
+    b.style.top = top;
+    b.innerHTML = BOAT;
+    host.appendChild(b);
+    return b;
+  }).filter(Boolean);
+  const hud = document.getElementById('hud');
+  const hudN = document.getElementById('hud-n');
+  hud.hidden = false;
+  let saved = 0, over = false;
+  const finish = () => {
+    over = true;
+    hud.classList.add('done');
+    document.getElementById('rescue-flash').classList.add('go');
+    setTimeout(() => document.getElementById('rescue-msg').classList.add('show'), 500);
+  };
+  document.addEventListener('mousemove', (e) => {
+    if (over) return;
+    for (const b of boats) {
+      if (b.dataset.lit) continue;
+      const r = b.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > innerHeight) continue;
+      const dx = e.clientX - (r.left + r.width / 2);
+      const dy = e.clientY - (r.top + r.height / 2);
+      if (dx * dx + dy * dy < 12100) {
+        b.dataset.lit = '1';
+        b.classList.add('lit');
+        hudN.textContent = ++saved;
+        if (saved === boats.length) finish();
+      }
+    }
+  }, { passive: true });
+  document.querySelector('#rescue-msg .close').addEventListener('click', () =>
+    document.getElementById('rescue-msg').classList.remove('show'));
+}
+
+if (!calm) {
+  const s1 = document.createElement('script');
+  s1.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js';
+  s1.onload = () => {
+    const s2 = document.createElement('script');
+    s2.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js';
+    s2.onload = () => {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.to('.hero-photo', { yPercent: 9, ease: 'none',
+        scrollTrigger: { trigger: 'header', start: 'top top', end: 'bottom top', scrub: true } });
+      gsap.fromTo('.statement .bg-photo', { scale: 1.12 }, { scale: 1, ease: 'none',
+        scrollTrigger: { trigger: '.statement', start: 'top bottom', end: 'bottom top', scrub: true } });
+      gsap.utils.toArray('section h2').forEach((el) =>
+        gsap.from(el, { opacity: 0, y: 26, duration: .8, ease: 'power2.out',
+          scrollTrigger: { trigger: el, start: 'top 86%' } }));
+    };
+    document.head.appendChild(s2);
+  };
+  document.head.appendChild(s1);
 }
 
 const flotilla = document.getElementById('flotilla');
