@@ -345,6 +345,8 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
 #intro p{font-family:var(--serif);font-style:italic;font-weight:600;font-size:clamp(28px,5.5vw,72px);letter-spacing:-1px;text-align:center;padding:0 var(--s5);opacity:0;text-wrap:balance}
 #intro p.show{animation:card 1.6s ease forwards}
 @keyframes card{0%{opacity:0;transform:translateY(14px)}18%{opacity:1;transform:none}82%{opacity:1}100%{opacity:0;transform:translateY(-10px)}}
+#intro .mark{position:absolute;top:14vh;left:50%;transform:translateX(-50%);font-family:var(--serif);font-size:var(--fs-h4);color:var(--dim);letter-spacing:.5px}
+#intro .mark i{font-style:italic}
 #intro .skip{position:absolute;bottom:13vh;right:var(--s5);background:none;border:1px solid var(--hair-strong);color:var(--gray);font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:1.5px;padding:var(--s2) var(--s4);border-radius:var(--r-pill);cursor:pointer}
 #intro .skip:hover{color:var(--paper);border-color:var(--paper)}
 
@@ -392,6 +394,7 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
 <div id="torch" aria-hidden="true"></div>
 <div id="intro" aria-hidden="true">
   <div class="bar t"></div><div class="bar b"></div>
+  <div class="mark">Lead <i>Island</i></div>
   <p id="intro-card"></p>
   <button class="skip" type="button">pular →</button>
 </div>
