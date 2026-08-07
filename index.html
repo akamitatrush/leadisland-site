@@ -337,6 +337,26 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
 #depth{position:fixed;left:18px;bottom:22px;z-index:var(--z-hud);font-family:var(--mono);font-size:var(--fs-xs);color:var(--dim);letter-spacing:1.5px;pointer-events:none}
 @media(max-width:1200px){#depth{display:none}}
 
+/* ---- filme pinado (3 cenas) ---- */
+#filme{position:relative}
+.scene{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;border-bottom:1px solid var(--hair)}
+.scene .cap{position:absolute;top:88px;left:var(--s5);z-index:3;font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:2.5px;color:var(--dim)}
+.scene .wrap{position:relative;z-index:2}
+.sc2 .wrap{padding-top:var(--s9);padding-bottom:var(--s9)}
+.sc2v{background:linear-gradient(90deg,rgba(7,7,7,.86) 0%,rgba(7,7,7,.5) 55%,rgba(7,7,7,.28) 100%),linear-gradient(to top,var(--ink),transparent 30%)}
+.sc3v{background:radial-gradient(70% 70% at 50% 55%,rgba(7,7,7,.08),rgba(7,7,7,.82)),linear-gradient(to bottom,rgba(7,7,7,.6),transparent 25%)}
+.sc3w{text-align:center}
+.sc3-line{font-family:var(--serif);font-weight:600;font-size:clamp(34px,5.5vw,76px);line-height:1.15;text-wrap:balance}
+.sc3-line em{font-style:italic;color:var(--gray)}
+.lbx{position:absolute;left:0;right:0;height:0;background:#000;z-index:5;pointer-events:none}
+.lbx.t{top:0}.lbx.b{bottom:0}
+@media(min-width:900px){
+  body.cine #filme{height:430vh}
+  body.cine .stage{position:sticky;top:0;height:100vh;overflow:hidden}
+  body.cine .scene{position:absolute;inset:0;border-bottom:none}
+  body.cine .sc2,body.cine .sc3{opacity:0}
+}
+
 /* ---- cinema: abertura ---- */
 #intro{position:fixed;inset:0;z-index:200;background:var(--ink);display:flex;align-items:center;justify-content:center;transition:opacity .9s ease}
 #intro.out{opacity:0;pointer-events:none}
@@ -422,10 +442,13 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
   </div>
 </nav>
 
-<header>
-  <div class="hero-photo-wrap" aria-hidden="true"><img class="hero-photo" src="assets/farol.jpg" alt="" fetchpriority="high"></div>
-  <div class="hero-veil" aria-hidden="true"></div>
-  <div class="wrap hero-in">
+<div id="filme">
+ <div class="stage">
+  <section class="scene sc1" aria-label="Capítulo 1: a noite">
+    <div class="hero-photo-wrap" aria-hidden="true"><img class="hero-photo" src="assets/farol.jpg" alt="" fetchpriority="high"></div>
+    <div class="hero-veil" aria-hidden="true"></div>
+    <span class="cap" aria-hidden="true">CAP. 01 · A NOITE</span>
+    <div class="wrap hero-in">
     <h1 class="rise">Todo dia, leads afundam no seu WhatsApp. <em>Nesta ilha, nenhum se perde.</em></h1>
     <p class="hero-sub rise">A Lead Island coloca um <b>funcionário de IA</b> no seu número: ele qualifica cada lead na hora, calcula pela <b>sua</b> tabela sem inventar nada, <b>não desiste de quem some</b> — e chama você na hora certa de fechar.</p>
     <div class="hero-cta rise">
@@ -437,12 +460,12 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
     </div>
     <p class="micro rise">Sério: quem atende é <span>ele mesmo</span>. Vai tentar te vender a própria ilha — e provavelmente consegue.</p>
   </div>
-</header>
-
-<div class="marquee" aria-hidden="true"><div class="mq">qualifica na hora · calcula pela sua tabela · não desiste do lead · chama o humano na hora certa · 24 horas por dia · sem inventar preço &nbsp;·&nbsp; qualifica na hora · calcula pela sua tabela · não desiste do lead · chama o humano na hora certa · 24 horas por dia · sem inventar preço &nbsp;·&nbsp; </div></div>
-
-<section id="conta">
-  <div class="wrap">
+  </section>
+  <section class="scene sc2" id="conta" aria-label="Capítulo 2: os perdidos">
+    <img class="bg-photo" src="assets/flotilha.jpg" alt="" aria-hidden="true">
+    <div class="bg-veil sc2v" aria-hidden="true"></div>
+    <span class="cap" aria-hidden="true">CAP. 02 · OS PERDIDOS</span>
+    <div class="wrap">
     <h2>Você já paga pelos 100. Só atende 30.</h2>
     <div class="fleet">
       <div class="fleet-copy">
@@ -452,9 +475,22 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
       <div class="flotilla" id="flotilla" role="img" aria-label="Cem quadrados representando leads: trinta acesos em branco, setenta apagados — os que esfriam sem resposta.">
         <span class="flotilla-cap">■ 30 atendidos · <span style="color:var(--gray)">■ 70 perdidos no mar</span></span>
       </div>
-    </div>
-  </div>
-</section>
+    </div></div>
+  </section>
+  <section class="scene sc3" aria-label="Capítulo 3: o resgate">
+    <img class="bg-photo" src="assets/barco.jpg" alt="" aria-hidden="true">
+    <div class="bg-veil sc3v" aria-hidden="true"></div>
+    <span class="cap" aria-hidden="true">CAP. 03 · O RESGATE</span>
+    <div class="wrap sc3w"><p class="sc3-line">Um por um,<br><em>de volta pra terra firme.</em></p></div>
+  </section>
+  <div class="lbx t" aria-hidden="true"></div>
+  <div class="lbx b" aria-hidden="true"></div>
+ </div>
+</div>
+
+<div class="marquee" aria-hidden="true"><div class="mq">qualifica na hora · calcula pela sua tabela · não desiste do lead · chama o humano na hora certa · 24 horas por dia · sem inventar preço &nbsp;·&nbsp; qualifica na hora · calcula pela sua tabela · não desiste do lead · chama o humano na hora certa · 24 horas por dia · sem inventar preço &nbsp;·&nbsp; </div></div>
+
+
 
 <section id="duelo">
   <div class="wrap">
@@ -762,22 +798,28 @@ const routeIO = new IntersectionObserver((entries) => {
 routeIO.observe(route);
 
 const counts = [...document.querySelectorAll('.cnt')];
-if (!calm && counts.length) {
-  const conta = document.getElementById('conta');
+let cntFired = false;
+const fireCnt = () => {
+  if (cntFired || !counts.length) return;
+  cntFired = true;
+  if (calm) { counts.forEach(c => c.textContent = c.dataset.t); return; }
+  const t0 = performance.now(), dur = 1300;
+  const tick = (now) => {
+    const p = Math.min(1, (now - t0) / dur);
+    const ease = 1 - Math.pow(1 - p, 3);
+    counts.forEach(c => { c.textContent = Math.round(ease * +c.dataset.t); });
+    if (p < 1) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+};
+if (counts.length) {
+  const contaEl = document.getElementById('conta');
   const cntIO = new IntersectionObserver((entries) => {
     if (!entries[0].isIntersecting) return;
-    cntIO.disconnect();
-    const t0 = performance.now();
-    const dur = 1300;
-    const tick = (now) => {
-      const p = Math.min(1, (now - t0) / dur);
-      const ease = 1 - Math.pow(1 - p, 3);
-      counts.forEach(c => { c.textContent = Math.round(ease * +c.dataset.t); });
-      if (p < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
+    if (document.body.classList.contains('cine')) { cntIO.disconnect(); return; }
+    cntIO.disconnect(); fireCnt();
   }, { threshold: 0.4 });
-  cntIO.observe(conta);
+  cntIO.observe(contaEl);
 }
 
 const intro = document.getElementById('intro');
@@ -863,11 +905,26 @@ if (!calm) {
     s2.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js';
     s2.onload = () => {
       gsap.registerPlugin(ScrollTrigger);
-      gsap.to('.hero-photo', { yPercent: 9, ease: 'none',
-        scrollTrigger: { trigger: 'header', start: 'top top', end: 'bottom top', scrub: true } });
+      if (matchMedia('(min-width:900px)').matches) {
+        document.body.classList.add('cine');
+        const tl = gsap.timeline({ scrollTrigger: { trigger: '#filme', start: 'top top', end: 'bottom bottom', scrub: 0.6 } });
+        tl.to('.sc1 .hero-photo', { scale: 1.12, yPercent: 6, ease: 'none', duration: 3 }, 0)
+          .to('.lbx', { height: '9vh', duration: .6 }, 2.5)
+          .to('.sc1', { opacity: 0, duration: .8 }, 3)
+          .fromTo('.sc2', { opacity: 0 }, { opacity: 1, duration: .8 }, 3.2)
+          .fromTo('.sc2 .bg-photo', { scale: 1.14 }, { scale: 1.02, ease: 'none', duration: 3.2 }, 3.2)
+          .call(() => { fireFleet(); fireCnt(); }, [], 3.8)
+          .to('.lbx', { height: 0, duration: .6 }, 4)
+          .to('.lbx', { height: '9vh', duration: .6 }, 6.4)
+          .to('.sc2', { opacity: 0, duration: .8 }, 6.9)
+          .fromTo('.sc3', { opacity: 0 }, { opacity: 1, duration: .8 }, 7.1)
+          .fromTo('.sc3 .bg-photo', { scale: 1.18 }, { scale: 1.03, ease: 'none', duration: 2.8 }, 7.1)
+          .fromTo('.sc3-line', { opacity: 0, y: 34 }, { opacity: 1, y: 0, duration: .9 }, 7.5)
+          .to('.lbx', { height: 0, duration: .6 }, 8.2);
+      }
       gsap.fromTo('.statement .bg-photo', { scale: 1.12 }, { scale: 1, ease: 'none',
         scrollTrigger: { trigger: '.statement', start: 'top bottom', end: 'bottom top', scrub: true } });
-      gsap.utils.toArray('section h2').forEach((el) =>
+      gsap.utils.toArray('section:not(.scene) h2').forEach((el) =>
         gsap.from(el, { opacity: 0, y: 26, duration: .8, ease: 'power2.out',
           scrollTrigger: { trigger: el, start: 'top 86%' } }));
     };
@@ -879,19 +936,21 @@ if (!calm) {
 const flotilla = document.getElementById('flotilla');
 const cap = flotilla.querySelector('.flotilla-cap');
 const frag = document.createDocumentFragment();
-for (let i = 0; i < 100; i++) {
-  frag.appendChild(document.createElement('i'));
-}
+for (let i = 0; i < 100; i++) frag.appendChild(document.createElement('i'));
 flotilla.insertBefore(frag, cap);
 const dots = [...flotilla.querySelectorAll('i')];
 const lit = new Set();
 while (lit.size < 30) lit.add(Math.floor(Math.random() * 100));
+let fleetFired = false;
+const fireFleet = () => {
+  if (fleetFired) return;
+  fleetFired = true;
+  dots.forEach((d, i) => setTimeout(() => d.classList.add(lit.has(i) ? 'ok' : 'lost'), 12 * i));
+};
 const fleetIO = new IntersectionObserver((entries) => {
   if (!entries[0].isIntersecting) return;
-  fleetIO.disconnect();
-  dots.forEach((d, i) => {
-    setTimeout(() => d.classList.add(lit.has(i) ? 'ok' : 'lost'), 12 * i);
-  });
+  if (document.body.classList.contains('cine')) { fleetIO.disconnect(); return; }
+  fleetIO.disconnect(); fireFleet();
 }, { threshold: 0.4 });
 fleetIO.observe(flotilla);
 
