@@ -291,6 +291,21 @@ h2{font-family:var(--serif);font-weight:600;font-size:var(--fs-h2);line-height:v
 .founder-offer p{font-size:var(--fs-md);color:var(--gray);max-width:660px}
 .founder-offer p b{color:var(--paper)}
 
+/* ---- como começa ---- */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s5);margin-top:var(--s7)}
+@media(max-width:900px){.steps{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.steps{grid-template-columns:1fr}}
+.step{border-top:1px solid var(--hair-strong);padding-top:var(--s4)}
+.step code{font-family:var(--mono);font-size:var(--fs-xs);color:var(--dim);letter-spacing:2px}
+.step h4{font-family:var(--serif);font-size:var(--fs-h4);font-weight:600;margin:var(--s2) 0}
+.step p{font-size:var(--fs-sm);color:var(--gray);line-height:var(--lh-comp)}
+.say{margin-top:var(--s2);font-family:var(--serif);font-style:italic;color:var(--paper);font-size:var(--fs-md)}
+.say::before{content:"— "}
+.tw-points{margin-top:var(--s4);list-style:none;max-width:620px}
+.tw-points li{padding:var(--s2) 0;color:var(--gray);font-size:var(--fs-md);display:flex;gap:var(--s3);align-items:flex-start}
+.tw-points li::before{content:"—";color:var(--dim);flex-shrink:0}
+.tw-points b{color:var(--paper);font-weight:500}
+
 /* ---- faq ---- */
 .faq{max-width:720px;margin-top:var(--s7)}
 .faq details{border-bottom:1px solid var(--hair);padding:var(--s1) 0}
@@ -443,8 +458,13 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
 
 <section id="torre">
   <div class="wrap">
-    <h2>A Torre: você no comando, o tempo todo.</h2>
-    <p class="lead-p">É daqui que o dono enxerga a ilha: cada conversa ao vivo, quem está com a bola — a IA, o farol ou um humano — e os leads que voltaram do mar.</p>
+    <h2>A Torre: você no comando — sem estar preso ao balcão.</h2>
+    <p class="lead-p">É daqui que o dono enxerga a ilha: cada conversa ao vivo, quem está com a bola — a IA, o farol ou um humano — e os leads que voltaram do mar. Na prática, o que muda na sua semana:</p>
+    <ul class="tw-points">
+      <li><b>O sábado à noite volta a ser seu.</b> O funcionário atende às 23h, e você só vê o resultado na segunda de manhã.</li>
+      <li><b>Assumir é um clique.</b> A IA silencia na hora, guarda o contexto e retoma quando você devolver — sem dois falando juntos.</li>
+      <li><b>Você fecha o mês com um número que hoje não existe:</b> quantos leads o farol trouxe de volta — e quanto isso valeu.</li>
+    </ul>
     <div class="tower" role="img" aria-label="Demonstração do painel da Torre de controle: lista de conversas com etiquetas de IA ativa, farol e atendimento humano.">
       <div class="chrome" aria-hidden="true"><i></i><i></i><i></i><span>torre.leadisland.com.br · demonstração</span></div>
       <div class="tw-head">
@@ -503,25 +523,66 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
     <ul class="manifest">
       <li>
         <h4>Revenda de celulares</h4>
-        <p>Avaliação de troca calculada pela sua tabela: modelo, tela, bateria — sem chute e sem prejuízo.</p>
+        <div>
+          <p>Avaliação de troca calculada pela sua tabela: modelo, tela, bateria — sem chute e sem prejuízo.</p>
+          <p class="say">"Com a tela trincada, seu iPhone 12 entra por R$ 1.425. Reservo o 15 pra você?"</p>
+        </div>
         <span class="tag on">funil pronto</span>
       </li>
       <li>
         <h4>Energia por assinatura</h4>
-        <p>Qualificação pela conta de luz, coleta de documentos e handoff — do anúncio à proposta.</p>
+        <div>
+          <p>Qualificação pela conta de luz, coleta de documentos e handoff — do anúncio à proposta.</p>
+          <p class="say">"Com R$ 240 por mês, sua economia fica em torno de R$ 430 por ano. Me manda uma foto da conta?"</p>
+        </div>
         <span class="tag on">funil pronto</span>
       </li>
       <li>
         <h4>Crédito consignado</h4>
-        <p>Coleta guiada e didática de dados e documentos, com consentimento LGPD no fluxo.</p>
+        <div>
+          <p>Coleta guiada e didática de dados e documentos, com consentimento LGPD no fluxo.</p>
+          <p class="say">"Logradouro é só o nome da sua rua. Pode me falar por áudio, se preferir."</p>
+        </div>
         <span class="tag forming">em formação</span>
       </li>
       <li>
         <h4>Clínicas e serviços</h4>
-        <p>Agendamento que confirma, lembra e reagenda — agenda cheia sem telefone tocando.</p>
+        <div>
+          <p>Agendamento que confirma, lembra e reagenda — agenda cheia sem telefone tocando.</p>
+          <p class="say">"Quinta às 15h ou sexta às 9h? Te mando um lembrete um dia antes."</p>
+        </div>
         <span class="tag forming">em formação</span>
       </li>
     </ul>
+  </div>
+</section>
+
+<section id="comeco">
+  <div class="wrap">
+    <h2>Do primeiro oi ao funcionário no ar.</h2>
+    <p class="lead-p">Sem projeto de seis meses, sem consultoria infinita. O caminho inteiro cabe em quatro passos:</p>
+    <div class="steps">
+      <div class="step">
+        <code>PASSO 01</code>
+        <h4>A conversa</h4>
+        <p>20 minutos, você e a gente: seu funil, sua tabela de preços e o jeito de falar do seu negócio.</p>
+      </div>
+      <div class="step">
+        <code>PASSO 02</code>
+        <h4>A montagem</h4>
+        <p>Em até 7 dias seu funcionário está treinado no seu ramo, com número oficial e templates aprovados na Meta.</p>
+      </div>
+      <div class="step">
+        <code>PASSO 03</code>
+        <h4>O teste</h4>
+        <p>Você conversa com ele antes de qualquer cliente — e ajusta o que quiser. Só vai ao ar com o seu aval.</p>
+      </div>
+      <div class="step">
+        <code>PASSO 04</code>
+        <h4>O ar</h4>
+        <p>Leads entrando, farol aceso, você na Torre. Daqui pra frente é mensalidade, sem fidelidade.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -574,6 +635,18 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
       <details>
         <summary>Posso assumir a conversa quando quiser?</summary>
         <p>Um clique na Torre e a conversa é sua. A IA silencia, guarda o contexto e retoma quando você devolver.</p>
+      </details>
+      <details>
+        <summary>Meu cliente vai perceber que é um robô?</summary>
+        <p>Vai — porque a gente não esconde. O funcionário se apresenta como assistente da sua loja, e é exatamente por isso que funciona: ele responde em segundos, não erra preço e passa pro humano na hora certa. Cliente não odeia robô; odeia robô ruim que finge ser gente.</p>
+      </details>
+      <details>
+        <summary>Preciso trocar de número?</summary>
+        <p>Não. Conectamos no seu número oficial do WhatsApp Business — ou criamos um número novo dedicado, se você preferir separar o atendimento.</p>
+      </details>
+      <details>
+        <summary>Tem custo além da mensalidade?</summary>
+        <p>Só o da própria Meta: o WhatsApp cobra centavos por conversa iniciada pela empresa (as iniciadas pelo cliente têm janela gratuita). Pra um volume típico de PME, isso fica em dezenas de reais por mês — e aparece transparente na sua Torre.</p>
       </details>
       <details>
         <summary>E a LGPD?</summary>
