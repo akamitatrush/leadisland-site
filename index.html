@@ -91,8 +91,8 @@ header{position:relative;min-height:min(100svh,940px);display:flex;align-items:c
   .beam-wedge{left:-350px;top:-350px;width:700px;height:700px}
   .lh{transform:translate(-50%,-26px) scale(.72);transform-origin:50% 26px}
 }
-.hero-in{padding-top:150px;padding-bottom:120px;max-width:760px}
-h1{font-family:var(--serif);font-weight:700;font-size:clamp(38px,6vw,68px);line-height:1.06;letter-spacing:-.5px;text-wrap:balance}
+.hero-in{padding-top:150px;padding-bottom:120px;max-width:900px}
+h1{font-family:var(--serif);font-weight:700;font-size:clamp(40px,7.2vw,94px);line-height:1.03;letter-spacing:-1px;text-wrap:balance}
 h1 em{font-style:italic;font-weight:600;display:block;margin-top:10px;color:var(--gray)}
 .hero-sub{margin:28px 0 36px;font-size:clamp(16px,2vw,19px);color:var(--gray);max-width:560px}
 .hero-sub b{color:var(--paper);font-weight:500}
@@ -105,6 +105,35 @@ h1 em{font-style:italic;font-weight:600;display:block;margin-top:10px;color:var(
 .rise:nth-child(3){animation-delay:.3s}.rise:nth-child(4){animation-delay:.44s}
 
 section{position:relative;padding:96px 0;border-bottom:1px solid var(--hair)}
+
+/* letreiro do porto */
+.marquee{overflow:hidden;padding:13px 0;border-bottom:1px solid var(--hair);position:relative;z-index:2;background:var(--ink)}
+.mq{display:inline-block;white-space:nowrap;animation:mq 32s linear infinite;font-family:var(--mono);font-size:12px;letter-spacing:2.2px;color:var(--gray);text-transform:uppercase}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* manifesto */
+.statement{padding:150px 24px;text-align:center;border-bottom:1px solid var(--hair)}
+.statement p{font-family:var(--serif);font-style:italic;font-weight:600;font-size:clamp(56px,10vw,150px);line-height:1.04;letter-spacing:-2px;text-wrap:balance}
+
+/* demo interativa */
+.dm-log{height:410px;overflow-y:auto;padding:22px 18px;display:flex;flex-direction:column;scrollbar-width:thin}
+.d-agent{align-self:flex-start;background:var(--ink-2);border:1px solid var(--hair);color:var(--paper);border-bottom-left-radius:4px}
+.d-user{align-self:flex-end;background:rgba(37,211,102,.09);border:1px solid rgba(37,211,102,.35);color:#B8EACB;border-bottom-right-radius:4px}
+.d-farol{align-self:flex-start;background:var(--paper);color:var(--ink);border-bottom-left-radius:4px;font-weight:500}
+.d-note{align-self:center;color:var(--gray);font-style:italic;font-size:12.5px;text-align:center;padding:4px;background:none}
+.typing{align-self:flex-start;display:inline-flex;gap:5px;padding:14px 16px;background:var(--ink-2);border:1px solid var(--hair);border-radius:14px;border-bottom-left-radius:4px;margin-bottom:10px}
+.typing i{width:6px;height:6px;border-radius:50%;background:var(--gray);animation:tp 1s infinite}
+.typing i:nth-child(2){animation-delay:.15s}
+.typing i:nth-child(3){animation-delay:.3s}
+@keyframes tp{0%,100%{opacity:.25;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}}
+.chips{display:flex;gap:8px;flex-wrap:wrap;padding:14px 18px;border-top:1px solid var(--hair);min-height:64px}
+.chip{background:none;border:1px solid var(--hair-strong);color:var(--paper);font-family:var(--sans);font-size:13.5px;padding:10px 16px;border-radius:999px;cursor:pointer;transition:border-color .2s,background .2s}
+.chip:hover{border-color:var(--paper);background:rgba(245,245,245,.05)}
+.chip.go{background:var(--wa);border-color:var(--wa);color:#04140A;font-weight:600;text-decoration:none;display:inline-block}
+
+/* profundímetro */
+#depth{position:fixed;left:18px;bottom:22px;z-index:40;font-family:var(--mono);font-size:11px;color:var(--dim);letter-spacing:1.5px;pointer-events:none}
+@media(max-width:1200px){#depth{display:none}}
 h2{font-family:var(--serif);font-weight:600;font-size:clamp(28px,4vw,42px);line-height:1.15;max-width:680px;text-wrap:balance}
 .lead-p{margin-top:18px;color:var(--gray);max-width:620px}
 .lead-p b{color:var(--paper);font-weight:500}
@@ -195,17 +224,7 @@ h2{font-family:var(--serif);font-weight:600;font-size:clamp(28px,4vw,42px);line-
 .story{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
 @media(max-width:860px){.story{grid-template-columns:1fr;gap:36px}}
 .phone{background:var(--panel);border:1px solid var(--hair-strong);border-radius:26px;padding:26px 22px;max-width:420px;box-shadow:0 30px 80px rgba(0,0,0,.55)}
-.bub{max-width:85%;padding:11px 15px;border-radius:14px;font-size:14.5px;line-height:1.5;margin-bottom:10px;transition:opacity .6s ease,transform .6s ease}
-.phone.prep .bub{opacity:0;transform:translateY(12px)}
-.phone.in .bub{opacity:1;transform:none}
-.phone.in .bub:nth-child(1){transition-delay:.1s}
-.phone.in .bub:nth-child(2){transition-delay:.5s}
-.phone.in .bub:nth-child(3){transition-delay:.9s}
-.phone.in .bub:nth-child(4){transition-delay:1.4s}
-.phone.in .bub:nth-child(5){transition-delay:1.9s}
-.b-ana{background:var(--ink-2);border:1px solid var(--hair);color:var(--paper);border-bottom-left-radius:4px}
-.b-ia{background:rgba(37,211,102,.09);border:1px solid rgba(37,211,102,.35);color:#B8EACB;margin-left:auto;border-bottom-right-radius:4px}
-.b-note{background:none;color:var(--gray);font-style:italic;font-size:12.5px;text-align:center;max-width:100%;padding:4px}
+.bub{max-width:85%;padding:11px 15px;border-radius:14px;font-size:14.5px;line-height:1.5;margin-bottom:10px}
 .story-txt h2{max-width:none}
 .big-q{font-family:var(--serif);font-style:italic;font-size:21px;color:var(--paper);margin-top:24px;border-left:1px solid var(--paper);padding-left:18px}
 
@@ -265,7 +284,6 @@ footer{border-top:1px solid var(--hair);padding:36px 0}
   .beam-wedge{animation:none;opacity:.4}
   .rise{animation:none;opacity:1;transform:none}
   .bub{transition:none}
-  .phone.prep .bub{opacity:1;transform:none}
   .flotilla i{transition:none}
   #torch{display:none}
   .route .stop{opacity:1;transform:none;transition:none}
@@ -276,6 +294,7 @@ footer{border-top:1px solid var(--hair);padding:36px 0}
 </head>
 <body>
 <div id="torch" aria-hidden="true"></div>
+<div id="depth" aria-hidden="true">▾ 0 m</div>
 <a class="skip" href="#conta">Pular para o conteúdo</a>
 
 <nav aria-label="Principal">
@@ -324,6 +343,8 @@ footer{border-top:1px solid var(--hair);padding:36px 0}
     <p class="micro rise">Sério: quem atende é <span>ele mesmo</span>. Vai tentar te vender a própria ilha — e provavelmente consegue.</p>
   </div>
 </header>
+
+<div class="marquee" aria-hidden="true"><div class="mq">qualifica na hora · calcula pela sua tabela · não desiste do lead · chama o humano na hora certa · 24 horas por dia · sem inventar preço &nbsp;·&nbsp; qualifica na hora · calcula pela sua tabela · não desiste do lead · chama o humano na hora certa · 24 horas por dia · sem inventar preço &nbsp;·&nbsp; </div></div>
 
 <section id="conta">
   <div class="wrap">
@@ -416,21 +437,22 @@ footer{border-top:1px solid var(--hair);padding:36px 0}
   </div>
 </section>
 
-<section id="ana">
+<section id="demo">
   <div class="wrap story">
     <div class="story-txt">
-      <h2>A Ana ia embora. O farol trouxe de volta.</h2>
-      <p class="lead-p">Ela se interessou, respondeu — e sumiu no meio da conversa, como a maioria faz. Quatro horas depois, o farol acendeu com o contexto dela. A Ana voltou, mandou os documentos e virou proposta. <b>Cena do nosso funil de demonstração de energia.</b></p>
-      <p class="big-q">"Sem o farol, esse lead estava morto. É a cena que paga a ilha."</p>
+      <h2>Não acredite em site. Converse com um.</h2>
+      <p class="lead-p">Você é o lead agora: escolha as respostas aí do lado e atravesse o funil da loja de demonstração. E faça um favor a você mesmo — <b>escolha "vou pensar…" quando aparecer</b>. É no seu sumiço que o funcionário mostra a que veio.</p>
+      <p class="big-q">"A demonstração não é um vídeo. É você dentro dela."</p>
     </div>
-    <div class="phone" id="phone" role="img" aria-label="Conversa de WhatsApp: Ana informa o valor da conta, some por quatro horas, o farol retoma citando a economia e Ana responde que quer continuar.">
-      <div class="bub b-ana">Uns 240 reais por mês</div>
-      <div class="bub b-note">— Ana some por 4 horas —</div>
-      <div class="bub b-ia">Oi Ana! Com R$ 240/mês, sua economia ficaria em torno de R$ 430 por ano. Vamos continuar de onde paramos?</div>
-      <div class="bub b-ana">Opa, vamos sim!</div>
-      <div class="bub b-note">lead resgatado · entregue ao vendedor</div>
+    <div class="phone" style="padding:0;overflow:hidden">
+      <div class="dm-log" id="dmlog" aria-live="polite"></div>
+      <div class="chips" id="dmchips"></div>
     </div>
   </div>
+</section>
+
+<section class="statement" aria-label="Nenhum lead se perde">
+  <p>Nenhum lead<br>se perde.</p>
 </section>
 
 <section id="nichos">
@@ -661,12 +683,91 @@ fleetIO.observe(flotilla);
   }
 })();
 
-const phone = document.getElementById('phone');
-phone.classList.add('prep');
-const phoneIO = new IntersectionObserver((entries) => {
-  if (entries[0].isIntersecting) { phone.classList.add('in'); phoneIO.disconnect(); }
-}, { threshold: 0.3 });
-phoneIO.observe(phone);
+addEventListener('scroll', () => {
+  const d = document.getElementById('depth');
+  if (d) d.textContent = '▾ ' + Math.max(0, Math.round(scrollY / 7)) + ' m';
+}, { passive: true });
+
+const DEMO = {
+  q1:      { msg: 'Boa tarde! Sou o funcionário de IA da loja. Qual iPhone você está procurando?', chips: [['iPhone 15', 'q2'], ['iPhone 13', 'q2']] },
+  q2:      { msg: 'Boa escolha. Você tem um aparelho pra dar de entrada?', chips: [['Tenho um iPhone 12', 'q3'], ['Não tenho', 'price2']] },
+  q3:      { msg: 'Me conta rapidinho: como estão a tela e a bateria dele?', chips: [['Tela ok, bateria 85%', 'price1'], ['Tela trincada…', 'price1b']] },
+  price1:  { msg: 'Consultei a tabela da loja: seu iPhone 12 entra por R$ 1.615. O iPhone 15 fica em R$ 2.384 pra você. Quer que eu reserve?', chips: [['Quero!', 'close'], ['Vou pensar…', 'ghost']] },
+  price1b: { msg: 'Consultei a tabela: com a tela trincada, seu iPhone 12 entra por R$ 1.425. O 15 fica em R$ 2.574. Reservo pra você?', chips: [['Quero!', 'close'], ['Vou pensar…', 'ghost']] },
+  price2:  { msg: 'Sem problema! O iPhone 15 está R$ 3.999, à vista ou em até 12x. Quer que eu deixe um reservado?', chips: [['Quero!', 'close'], ['Vou pensar…', 'ghost']] },
+  ghost:   { note: '— você fechou o WhatsApp e foi viver sua vida —', then: 'ghost2' },
+  ghost2:  { note: '4 horas depois…', then: 'farol', slow: true },
+  farol:   { farol: true, msg: 'Oi! Sua avaliação continua válida por 3 dias — e o iPhone que você queria segue disponível. Vamos fechar? Posso deixar separado pra hoje às 18h.', chips: [['Fechou, bora!', 'close2']] },
+  close:   { msg: 'Feito, reservado! Te passei pro vendedor humano com todo o histórico — ninguém vai te perguntar nada duas vezes. (Psiu: rode de novo e escolha "vou pensar…" pra ver o farol trabalhar.)', end: true },
+  close2:  { msg: 'Feito, reservado! Te passei pro vendedor humano com todo o histórico. Você sumiu — e mesmo assim não se perdeu. Isso foi o farol.', end: true }
+};
+
+const dmLog = document.getElementById('dmlog');
+const dmChips = document.getElementById('dmchips');
+if (dmLog) {
+  const scrollLog = () => { dmLog.scrollTop = dmLog.scrollHeight; };
+  const addBub = (cls, text) => {
+    const b = document.createElement('div');
+    b.className = 'bub ' + cls;
+    b.textContent = text;
+    dmLog.appendChild(b);
+    scrollLog();
+  };
+  const play = (id) => {
+    const step = DEMO[id];
+    dmChips.innerHTML = '';
+    if (step.note) {
+      setTimeout(() => {
+        addBub('d-note', step.note);
+        setTimeout(() => play(step.then), calm ? 100 : (step.slow ? 400 : 300));
+      }, calm ? 100 : (step.slow ? 1400 : 700));
+      return;
+    }
+    const typing = document.createElement('div');
+    typing.className = 'typing';
+    typing.innerHTML = '<i></i><i></i><i></i>';
+    setTimeout(() => {
+      dmLog.appendChild(typing);
+      scrollLog();
+      setTimeout(() => {
+        typing.remove();
+        addBub(step.farol ? 'd-farol' : 'd-agent', step.msg);
+        if (step.chips) {
+          step.chips.forEach(([label, next]) => {
+            const c = document.createElement('button');
+            c.className = 'chip';
+            c.type = 'button';
+            c.textContent = label;
+            c.addEventListener('click', () => {
+              addBub('d-user', label);
+              play(next);
+            });
+            dmChips.appendChild(c);
+          });
+        }
+        if (step.end) {
+          const again = document.createElement('button');
+          again.className = 'chip';
+          again.type = 'button';
+          again.textContent = '↻ Rodar de novo';
+          again.addEventListener('click', () => { dmLog.innerHTML = ''; play('q1'); });
+          dmChips.appendChild(again);
+          const go = document.createElement('a');
+          go.className = 'chip go';
+          go.href = 'https://wa.me/5500000000000?text=Oi!%20Vim%20da%20demo%20e%20quero%20a%20Lead%20Island';
+          go.target = '_blank';
+          go.rel = 'noopener';
+          go.textContent = 'Falar com o de verdade';
+          dmChips.appendChild(go);
+        }
+      }, calm ? 120 : 1100);
+    }, calm ? 80 : 350);
+  };
+  const dmIO = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) { dmIO.disconnect(); play('q1'); }
+  }, { threshold: 0.35 });
+  dmIO.observe(dmLog);
+}
 </script>
 </body>
 </html>
