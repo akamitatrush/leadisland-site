@@ -127,6 +127,15 @@ header{position:relative;min-height:min(100svh,940px);display:flex;align-items:c
              linear-gradient(to top,var(--ink) 0%,transparent 28%),
              linear-gradient(to bottom,rgba(7,7,7,.55) 0%,transparent 18%)}
 .bg-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.bgf{opacity:0;transition:opacity 2.6s ease}
+.statement .bg-photo.bgf.on{opacity:.55}
+.final .bg-photo.bgf.on{opacity:.5}
+.sc3 .bg-photo.bgf.on{opacity:1}
+#veleiro{position:fixed;bottom:12px;left:0;z-index:var(--z-hud);width:34px;height:24px;pointer-events:none;will-change:transform}
+#veleiro svg{width:100%;height:100%;animation:bob 2.4s ease-in-out infinite}
+#veleiro .sail,#veleiro .hull{fill:var(--dim)}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-3px) rotate(2deg)}}
+@media(max-width:1200px){#veleiro{display:none}}
 .bg-veil{position:absolute;inset:0;z-index:1;pointer-events:none}
 .hero-in{padding-top:150px;padding-bottom:120px;max-width:900px}
 h1{font-family:var(--serif);font-weight:700;font-size:var(--fs-h1);line-height:1.03;letter-spacing:-1px;text-wrap:balance}
@@ -424,6 +433,8 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
   .route .stop{opacity:1;transform:none;transition:none}
   body::before{animation:none}
   .sc1::after{animation:none;opacity:0}
+  #veleiro{display:none}
+  .bgf{transition:none}
   .hero-photo{transition:none}
   .route::before{transform:none;transition:none}
   .stop::before{transition:none}
@@ -441,6 +452,7 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
   <button class="skip" type="button">pular →</button>
 </div>
 <div id="depth" aria-hidden="true">▾ 0 m</div>
+<div id="veleiro" aria-hidden="true"><svg viewBox="0 0 34 24"><path class="sail" d="M17 1l8 11H9l8-11Z"/><path class="hull" d="M3 14h28l-7 8H10l-7-8Z"/></svg></div>
 <a class="skip" href="#conta">Pular para o conteúdo</a>
 
 <nav aria-label="Principal">
@@ -500,7 +512,7 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
     </div></div>
   </section>
   <section class="scene sc3" aria-label="Capítulo 3: o resgate">
-    <img class="bg-photo" src="assets/barco.jpg" alt="" aria-hidden="true">
+    <img class="bg-photo bgf on" src="assets/barco.jpg" alt="" aria-hidden="true"><img class="bg-photo bgf" src="assets/barco-glow.jpg" alt="" loading="lazy" aria-hidden="true">
     <div class="bg-veil sc3v" aria-hidden="true"></div>
     <span class="cap" aria-hidden="true">CAP. 03 · O RESGATE</span>
     <div class="wrap sc3w"><p class="sc3-line">Um por um,<br><em>de volta pra terra firme.</em></p></div>
@@ -529,7 +541,7 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
 </section>
 
 <section class="statement" aria-label="Nenhum lead se perde">
-  <img class="bg-photo" src="assets/flotilha.jpg" alt="" loading="lazy" aria-hidden="true">
+  <img class="bg-photo bgf on" src="assets/flotilha.jpg" alt="" loading="lazy" aria-hidden="true"><img class="bg-photo bgf" src="assets/flotilha-b1.jpg" alt="" loading="lazy" aria-hidden="true"><img class="bg-photo bgf" src="assets/flotilha-b2.jpg" alt="" loading="lazy" aria-hidden="true">
   <div class="bg-veil" aria-hidden="true"></div>
   <p>Nenhum lead<br>se perde.</p>
 </section>
@@ -795,7 +807,7 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
 </section>
 
 <section class="final">
-  <img class="bg-photo" src="assets/loja.jpg" alt="" loading="lazy" aria-hidden="true">
+  <img class="bg-photo bgf on" src="assets/loja.jpg" alt="" loading="lazy" aria-hidden="true"><img class="bg-photo bgf" src="assets/loja-glow.jpg" alt="" loading="lazy" aria-hidden="true">
   <div class="bg-veil" aria-hidden="true"></div>
   <div class="wrap">
     <h2>Traga seus leads <em>pra terra firme.</em></h2>
@@ -1021,7 +1033,26 @@ fleetIO.observe(flotilla);
 addEventListener('scroll', () => {
   const d = document.getElementById('depth');
   if (d) d.textContent = '▾ ' + Math.max(0, Math.round(scrollY / 7)) + ' m';
+  const v = document.getElementById('veleiro');
+  if (v) {
+    const max = document.documentElement.scrollHeight - innerHeight;
+    const p = max > 0 ? scrollY / max : 0;
+    v.style.transform = 'translateX(' + (12 + p * (innerWidth - 70)) + 'px)';
+  }
 }, { passive: true });
+
+if (!calm) {
+  [['.statement .bgf', 7000], ['.final .bgf', 5200], ['.sc3 .bgf', 4200]].forEach(([sel, ms]) => {
+    const els = [...document.querySelectorAll(sel)];
+    if (els.length < 2) return;
+    let i = 0;
+    setInterval(() => {
+      els[i].classList.remove('on');
+      i = (i + 1) % els.length;
+      els[i].classList.add('on');
+    }, ms);
+  });
+}
 
 const DEMO = {
   q1:      { msg: 'Oi! Sou o funcionário de IA da Loja do Roberto. Qual iPhone você procura?', chips: [['iPhone 15', 'q2'], ['iPhone 13', 'q2']] },
