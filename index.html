@@ -274,7 +274,12 @@ h2{font-family:var(--serif);font-weight:600;font-size:var(--fs-h2);line-height:v
 
 /* ---- planos ---- */
 .plans{display:grid;grid-template-columns:1fr 1fr;gap:var(--s5);margin-top:var(--s7);max-width:820px}
+.plans-3{grid-template-columns:repeat(3,1fr);max-width:none}
+@media(max-width:980px){.plans-3{grid-template-columns:1fr;max-width:560px}}
 @media(max-width:720px){.plans{grid-template-columns:1fr}}
+.plan-note{font-size:var(--fs-sm);color:var(--gray);font-style:italic;margin-top:2px}
+.setup-note{margin-top:var(--s5);font-size:var(--fs-md);color:var(--gray);max-width:720px}
+.setup-note b{color:var(--paper);font-weight:500}
 .plan{background:var(--ink-2);border:1px solid var(--hair);border-radius:var(--r-lg);padding:var(--s6)}
 .plan.hot{border-color:var(--paper);background:var(--panel)}
 .plan .tag-p{font-size:var(--fs-xs);letter-spacing:2px;text-transform:uppercase;color:var(--gray);font-weight:500;font-family:var(--mono)}
@@ -677,32 +682,48 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
 <section id="planos">
   <div class="wrap">
     <h2>Um setup, uma mensalidade. Sem fidelidade.</h2>
-    <div class="plans">
-      <div class="plan">
-        <p class="tag-p">Chegada à ilha</p>
-        <h3>Setup único</h3>
-        <p class="price">R$ 1.500 <small>a partir de</small></p>
+    <div class="plans plans-3">
+      <div class="plan hot">
+        <p class="tag-p">O funcionário completo</p>
+        <h3>Farol</h3>
+        <p class="price">R$ 397 <small>/mês</small></p>
+        <p class="plan-note">preço de fundador — a tabela sobe quando as 5 vagas fecharem</p>
         <ul>
-          <li>Metade pra começar, metade quando estiver no ar — com o seu aval</li>
-          <li>Funil do seu negócio montado e testado</li>
-          <li>Sua tabela de preços integrada</li>
-          <li>Número oficial WhatsApp configurado</li>
-          <li>Templates aprovados na Meta</li>
+          <li>Qualifica, calcula pela sua tabela, follow-up e handoff — tudo incluso</li>
+          <li>1 número WhatsApp oficial · 1 funil e 1 tabela de preços</li>
+          <li>Até 200 conversas novas por mês</li>
+          <li>Torre pra você e mais um vendedor</li>
+          <li>Relatório mensal dos resgates</li>
         </ul>
       </div>
-      <div class="plan hot">
-        <p class="tag-p">Vida na ilha</p>
-        <h3>Mensalidade</h3>
-        <p class="price">R$ 397 <small>/mês</small></p>
+      <div class="plan">
+        <p class="tag-p">A operação inteira na IA</p>
+        <h3>Ilha</h3>
+        <p class="price">R$ 697 <small>/mês</small></p>
+        <p class="plan-note">pra quem tem time e mais de um número</p>
         <ul>
-          <li>Funcionário de IA atendendo 24/7</li>
-          <li>Farol: follow-up automático e inteligente</li>
-          <li>Torre: painel ao vivo com handoff humano</li>
-          <li>A gente segue afinando seu funil, todo mês</li>
-          <li>Cancelar é uma mensagem no WhatsApp — sem multa, sem aviso prévio</li>
+          <li>Tudo do Farol, sem exceção</li>
+          <li>Até 3 números · 3 funis e 3 tabelas de preço</li>
+          <li>Até 1.000 conversas novas por mês</li>
+          <li>Torre liberada pro time (5 pessoas)</li>
+          <li>Relatório semanal + reunião mensal de calibragem</li>
+        </ul>
+      </div>
+      <div class="plan">
+        <p class="tag-p">Multi-unidade e franquias</p>
+        <h3>Arquipélago</h3>
+        <p class="price">R$ 1.297 <small>a partir de /mês</small></p>
+        <p class="plan-note">a gente desenha a ilha do seu tamanho</p>
+        <ul>
+          <li>Tudo da Ilha, sem exceção</li>
+          <li>Números por unidade · funis ilimitados</li>
+          <li>Volume de conversas sob escopo</li>
+          <li>Onboarding dedicado e SLA</li>
+          <li>Chama pra conversar — desenho 1:1</li>
         </ul>
       </div>
     </div>
+    <p class="setup-note">Setup de implantação: Farol R$ 1.500–2.500 · Ilha R$ 2.500–4.000 · Arquipélago por escopo. Sempre <b>metade pra começar, metade quando estiver no ar — com o seu aval.</b></p>
     <p class="plans-roi">R$ 397 por mês é menos que <em>um dia</em> de atendente — e ele trabalha os 30, de madrugada inclusive. Um único lead resgatado costuma pagar o mês; a conta você acompanha na sua Torre.</p>
     <p class="plans-honest">Sem plano anual, sem pegadinha: a gente prefere que você fique porque o farol resgata lead — não porque o contrato prende.</p>
     <div class="founder-offer">
