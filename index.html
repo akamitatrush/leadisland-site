@@ -214,6 +214,21 @@ h2{font-family:var(--serif);font-weight:600;font-size:var(--fs-h2);line-height:v
 .stop.farol::before{background:var(--paper);border-color:var(--paper);box-shadow:0 0 18px rgba(245,245,245,.55)}
 .stop h4{font-family:var(--serif);font-size:var(--fs-h4);font-weight:600;margin-bottom:var(--s2)}
 .stop p{font-size:var(--fs-sm);color:var(--gray);line-height:var(--lh-comp)}
+.stop .say{margin-top:var(--s2);font-size:var(--fs-sm)}
+.specs{margin-top:var(--s5);font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:2px;color:var(--gray);text-transform:uppercase;max-width:720px;line-height:2}
+.calc{display:grid;grid-template-columns:1fr 1.2fr;gap:var(--s7);margin-top:var(--s7);align-items:center}
+@media(max-width:860px){.calc{grid-template-columns:1fr}}
+.calc-ctrl label{display:flex;justify-content:space-between;align-items:baseline;font-size:var(--fs-md);color:var(--gray);margin:var(--s5) 0 var(--s2)}
+.calc-ctrl label b{color:var(--paper);font-variant-numeric:tabular-nums;font-size:var(--fs-h4);font-family:var(--serif)}
+.calc-ctrl input[type=range]{width:100%;accent-color:var(--wa);cursor:pointer}
+.calc-out{background:var(--panel);border:1px solid var(--hair-strong);border-radius:var(--r-lg);padding:var(--s6)}
+.co-line{font-family:var(--serif);font-size:var(--fs-h4);line-height:1.4}
+.co-line b{font-variant-numeric:tabular-nums}
+.co-line.big{font-size:var(--fs-h3);margin-top:var(--s3)}
+.co-line.big b{color:var(--paper);border-bottom:2px solid var(--wa);font-size:clamp(28px,3.4vw,40px)}
+.co-line.big span{display:block;font-family:var(--sans);font-size:var(--fs-sm);color:var(--gray);margin-top:var(--s2)}
+.co-note{margin-top:var(--s4);padding-top:var(--s4);border-top:1px dashed var(--hair);font-size:var(--fs-sm);color:var(--gray)}
+.co-note b{color:var(--paper)}
 
 /* ---- torre ---- */
 .tower{margin-top:var(--s7);background:var(--panel);border:1px solid var(--hair-strong);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-panel);max-width:880px}
@@ -576,11 +591,11 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
   <div class="wrap">
     <h2>A rota de um lead pela ilha: do anúncio ao seu CRM, sem buraco no caminho.</h2>
     <div class="route">
-      <div class="stop"><h4>Porto</h4><p>Seu lead chega por anúncio, site ou indicação — e é recebido na hora, de madrugada inclusive.</p></div>
-      <div class="stop"><h4>Trilhos</h4><p>O agente conversa seguindo o funil que você definiu: qualifica, coleta, calcula.</p></div>
-      <div class="stop farol"><h4>Farol</h4><p>O lead sumiu? O farol acende: retomada com contexto, no tempo certo, com limite educado.</p></div>
-      <div class="stop"><h4>Balsa</h4><p>Qualificado e completo, o lead é entregue no seu CRM — ou direto no WhatsApp do vendedor.</p></div>
-      <div class="stop"><h4>Torre</h4><p>Você vê todas as conversas ao vivo e assume qualquer uma com um clique.</p></div>
+      <div class="stop"><h4>Porto</h4><p>Seu lead chega por anúncio, site ou indicação — e é recebido na hora, de madrugada inclusive.</p><p class="say">"Oi! Que bom que você chamou. Me conta o que procura?"</p></div>
+      <div class="stop"><h4>Trilhos</h4><p>O agente conversa seguindo o funil que você definiu: qualifica, coleta, calcula.</p><p class="say">"Consultei a tabela: sua troca sai por R$ 1.425."</p></div>
+      <div class="stop farol"><h4>Farol</h4><p>O lead sumiu? O farol acende: retomada com contexto, no tempo certo, com limite educado.</p><p class="say">"Sua avaliação segue válida — vamos continuar?"</p></div>
+      <div class="stop"><h4>Balsa</h4><p>Qualificado e completo, o lead é entregue no seu CRM — ou direto no WhatsApp do vendedor.</p><p class="say">Lead + histórico inteiro. Ninguém pergunta nada duas vezes.</p></div>
+      <div class="stop"><h4>Torre</h4><p>Você vê todas as conversas ao vivo e assume qualquer uma com um clique.</p><p class="say">E vê quantos o farol trouxe de volta — em reais.</p></div>
     </div>
   </div>
 </section>
@@ -624,6 +639,7 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
       </ul>
     </div>
     <p class="tower-cap">Ambiente de demonstração com dados fictícios — é assim que a sua Torre nasce no primeiro dia, com os seus leads de verdade.</p>
+    <p class="specs" aria-label="Especificações">resposta em segundos · até 3 retomadas educadas · 24 horas por dia · API oficial da Meta · consentimento LGPD no fluxo</p>
   </div>
 </section>
 
@@ -698,6 +714,26 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
         <code>PASSO 04</code>
         <h4>O ar</h4>
         <p>Leads entrando, farol aceso, você na Torre. Daqui pra frente é mensalidade, sem fidelidade.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="calculo">
+  <div class="wrap">
+    <h2>Faça a conta com os seus números.</h2>
+    <p class="lead-p">Arrasta os controles e vê o tamanho do vazamento — e o que só um décimo dele resgatado significa no seu caixa.</p>
+    <div class="calc">
+      <div class="calc-ctrl">
+        <label for="c-leads">Leads novos por mês <b id="c-leads-v">300</b></label>
+        <input type="range" id="c-leads" min="50" max="2000" step="10" value="300">
+        <label for="c-ticket">Ticket médio da sua venda <b id="c-ticket-v">R$ 800</b></label>
+        <input type="range" id="c-ticket" min="100" max="10000" step="50" value="800">
+      </div>
+      <div class="calc-out">
+        <p class="co-line"><b id="c-frios">210</b> leads esfriam no vácuo todo mês</p>
+        <p class="co-line big">+ <b id="c-grana">R$ 6.720</b>/mês <span>se o farol resgatar 1 em 5 — e você fechar 1 em 5 dos resgatados</span></p>
+        <p class="co-note">Estimativa conservadora (70% esfriam sem resposta — proporção típica de quem anuncia). Os seus números reais, você acompanha na Torre. A mensalidade do Farol é R$ 397 — <b id="c-x">17×</b> menos que isso.</p>
       </div>
     </div>
   </div>
@@ -885,6 +921,25 @@ if (counts.length) {
     cntIO.disconnect(); fireCnt();
   }, { threshold: 0.4 });
   cntIO.observe(contaEl);
+}
+
+const cL = document.getElementById('c-leads');
+const cT = document.getElementById('c-ticket');
+if (cL && cT) {
+  const fmt = (n) => n.toLocaleString('pt-BR');
+  const upd = () => {
+    const leads = +cL.value, ticket = +cT.value;
+    const frios = Math.round(leads * 0.7);
+    const grana = Math.round(frios * 0.2 * 0.2) * ticket;
+    document.getElementById('c-leads-v').textContent = fmt(leads);
+    document.getElementById('c-ticket-v').textContent = 'R$ ' + fmt(ticket);
+    document.getElementById('c-frios').textContent = fmt(frios);
+    document.getElementById('c-grana').textContent = 'R$ ' + fmt(grana);
+    document.getElementById('c-x').textContent = Math.max(1, Math.round(grana / 397)) + '×';
+  };
+  cL.addEventListener('input', upd);
+  cT.addEventListener('input', upd);
+  upd();
 }
 
 const beams = [...document.querySelectorAll('.hero-photo')];
