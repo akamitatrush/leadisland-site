@@ -282,6 +282,7 @@ h2{font-family:var(--serif);font-weight:600;font-size:var(--fs-h2);line-height:v
 .typing i:nth-child(3){animation-delay:.3s}
 @keyframes tp{0%,100%{opacity:.25;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}}
 .chips{display:flex;gap:var(--s2);flex-wrap:wrap;padding:var(--s4);border-top:1px solid var(--hair);min-height:64px}
+.dm-note{padding:0 var(--s4) var(--s4);font-size:var(--fs-xs);color:var(--dim);font-style:italic}
 .chip{background:none;border:1px solid var(--hair-strong);color:var(--paper);font-family:var(--sans);font-size:var(--fs-sm);padding:var(--s3) var(--s4);border-radius:var(--r-pill);cursor:pointer;transition:border-color .2s,background .2s}
 .chip:hover{border-color:var(--paper);background:rgba(245,245,245,.05)}
 .chip.go{background:var(--wa);border-color:var(--wa);color:var(--wa-ink);font-weight:600;text-decoration:none;display:inline-block}
@@ -460,7 +461,7 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
 </head>
 <body>
 <div id="torch" aria-hidden="true"></div>
-<div id="intro" aria-hidden="true">
+<div id="intro">
   <div class="bar t"></div><div class="bar b"></div>
   <div class="mark">Lead <i>Island</i></div>
   <p id="intro-card"></p>
@@ -551,6 +552,7 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
     <div class="phone" style="padding:0;overflow:hidden">
       <div class="dm-log" id="dmlog" aria-live="polite"></div>
       <div class="chips" id="dmchips"></div>
+      <p class="dm-note">Demonstração roteirizada, de propósito — o funcionário de verdade improvisa dentro dos trilhos, com os seus preços.</p>
     </div>
   </div>
 </section>
@@ -722,7 +724,7 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
 <section id="calculo">
   <div class="wrap">
     <h2>Faça a conta com os seus números.</h2>
-    <p class="lead-p">Arrasta os controles e vê o tamanho do vazamento — e o que só um décimo dele resgatado significa no seu caixa.</p>
+    <p class="lead-p">Arrasta os controles e vê o tamanho do vazamento — e o que uma fatia bem conservadora dele, resgatada, significa no seu caixa.</p>
     <div class="calc">
       <div class="calc-ctrl">
         <label for="c-leads">Leads novos por mês <b id="c-leads-v">300</b></label>
@@ -733,7 +735,7 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
       <div class="calc-out">
         <p class="co-line"><b id="c-frios">210</b> leads esfriam no vácuo todo mês</p>
         <p class="co-line big">+ <b id="c-grana">R$ 6.720</b>/mês <span>se o farol resgatar 1 em 5 — e você fechar 1 em 5 dos resgatados</span></p>
-        <p class="co-note">Estimativa conservadora (70% esfriam sem resposta — proporção típica de quem anuncia). Os seus números reais, você acompanha na Torre. A mensalidade do Farol é R$ 397 — <b id="c-x">17×</b> menos que isso.</p>
+        <p class="co-note">Faturamento estimado, em conta conservadora (70% esfriam sem resposta — padrão de quem anuncia e atende na mão; resgate de 1 em 5 e fechamento de 1 em 5 = 1 lead em 25). Os seus números reais, você acompanha na Torre. A mensalidade do Farol é R$ 397 — <b id="c-x">17×</b> menos que isso.</p>
       </div>
     </div>
   </div>
@@ -860,7 +862,7 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
 <div class="foot-mark" aria-hidden="true"><img src="assets/marca.png" alt="" loading="lazy"></div>
 <div id="hud" hidden><svg viewBox="0 0 34 24" aria-hidden="true"><path class="sail" d="M17 1l8 11H9l8-11Z"/><path class="hull" d="M3 14h28l-7 8H10l-7-8Z"/></svg><span><b id="hud-n">0</b>/7 resgatados</span></div>
 <div id="rescue-flash" aria-hidden="true"></div>
-<div id="rescue-msg" role="dialog" aria-label="Resgate completo">
+<div id="rescue-msg" role="dialog" aria-modal="true" aria-label="Resgate completo">
   <button class="close" type="button" aria-label="Fechar">&#10005;</button>
   <h3>7 de 7 — todos resgatados.</h3>
   <p>Você acabou de fazer com o mouse o que o funcionário faz todo dia com os seus leads: não deixou nenhum no escuro.</p>
@@ -1006,7 +1008,11 @@ if (matchMedia('(hover:hover) and (pointer:fine) and (min-width:900px)').matches
     over = true;
     hud.classList.add('done');
     document.getElementById('rescue-flash').classList.add('go');
-    setTimeout(() => document.getElementById('rescue-msg').classList.add('show'), 500);
+    setTimeout(() => {
+      const msg = document.getElementById('rescue-msg');
+      msg.classList.add('show');
+      msg.querySelector('.close').focus();
+    }, 500);
   };
   document.addEventListener('mousemove', (e) => {
     if (over) return;
@@ -1026,6 +1032,9 @@ if (matchMedia('(hover:hover) and (pointer:fine) and (min-width:900px)').matches
   }, { passive: true });
   document.querySelector('#rescue-msg .close').addEventListener('click', () =>
     document.getElementById('rescue-msg').classList.remove('show'));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') document.getElementById('rescue-msg').classList.remove('show');
+  });
 }
 
 if (!calm) {
