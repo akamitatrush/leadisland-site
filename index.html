@@ -87,8 +87,8 @@ section,header{scroll-margin-top:72px}
 
 body::before{content:"";position:fixed;inset:-40px;pointer-events:none;z-index:var(--z-bg);opacity:.05;animation:grain .9s steps(1) infinite;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E")}
-#torch{position:fixed;inset:0;z-index:var(--z-bg);pointer-events:none;
-  background:radial-gradient(560px circle at var(--mx,-800px) var(--my,-800px),rgba(245,245,245,.05),transparent 65%)}
+#torch{position:fixed;left:-700px;top:-700px;width:1400px;height:1400px;z-index:var(--z-bg);pointer-events:none;will-change:transform;transform:translate(-800px,-800px);
+  background:radial-gradient(560px circle at center,rgba(245,245,245,.05),transparent 65%)}
 
 .wrap{max-width:1120px;margin:0 auto;padding:0 var(--s5);position:relative;z-index:var(--z-content)}
 
@@ -282,7 +282,7 @@ h2{font-family:var(--serif);font-weight:600;font-size:var(--fs-h2);line-height:v
 .typing i:nth-child(3){animation-delay:.3s}
 @keyframes tp{0%,100%{opacity:.25;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}}
 .chips{display:flex;gap:var(--s2);flex-wrap:wrap;padding:var(--s4);border-top:1px solid var(--hair);min-height:64px}
-.dm-note{padding:0 var(--s4) var(--s4);font-size:var(--fs-xs);color:var(--dim);font-style:italic}
+.dm-note{padding:0 var(--s4) var(--s4);font-size:var(--fs-xs);color:var(--gray);font-style:italic}
 .dm-note.top{padding:var(--s3) var(--s4);border-bottom:1px solid var(--hair)}
 .chip{background:none;border:1px solid var(--hair-strong);color:var(--paper);font-family:var(--sans);font-size:var(--fs-sm);padding:var(--s3) var(--s4);border-radius:var(--r-pill);cursor:pointer;transition:border-color .2s,background .2s}
 .chip:hover{border-color:var(--paper);background:rgba(245,245,245,.05)}
@@ -328,14 +328,14 @@ h2{font-family:var(--serif);font-weight:600;font-size:var(--fs-h2);line-height:v
 .founder-offer p{font-size:var(--fs-md);color:var(--gray);max-width:660px}
 .founder-offer p b{color:var(--paper)}
 .founder-offer h3 b{border-bottom:2px solid var(--paper)}
-.fo-date{margin-top:var(--s3);font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:1.5px;color:var(--dim)}
+.fo-date{margin-top:var(--s3);font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:1.5px;color:var(--gray)}
 
 /* ---- como começa ---- */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s5);margin-top:var(--s7)}
 @media(max-width:900px){.steps{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.steps{grid-template-columns:1fr}}
 .step{border-top:1px solid var(--hair-strong);padding-top:var(--s4)}
-.step code{font-family:var(--mono);font-size:var(--fs-xs);color:var(--dim);letter-spacing:2px}
+.step code{font-family:var(--mono);font-size:var(--fs-xs);color:var(--gray);letter-spacing:2px}
 .step h4{font-family:var(--serif);font-size:var(--fs-h4);font-weight:600;margin:var(--s2) 0}
 .step p{font-size:var(--fs-sm);color:var(--gray);line-height:var(--lh-comp)}
 .say{margin-top:var(--s2);font-family:var(--serif);font-style:italic;color:var(--paper);font-size:var(--fs-md)}
@@ -384,13 +384,13 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
 .foot .tetsu{font-size:var(--fs-xs);opacity:.7;letter-spacing:1px}
 
 /* ---- profundímetro ---- */
-#depth{position:fixed;left:18px;bottom:22px;z-index:var(--z-hud);font-family:var(--mono);font-size:var(--fs-xs);color:var(--dim);letter-spacing:1.5px;pointer-events:none}
+#depth{position:fixed;left:18px;bottom:22px;z-index:var(--z-hud);font-family:var(--mono);font-size:var(--fs-xs);color:var(--gray);letter-spacing:1.5px;pointer-events:none}
 @media(max-width:1200px){#depth{display:none}}
 
 /* ---- filme pinado (3 cenas) ---- */
 #filme{position:relative}
 .scene{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;border-bottom:1px solid var(--hair)}
-.scene .cap{position:absolute;top:88px;left:var(--s5);z-index:3;font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:2.5px;color:var(--dim)}
+.scene .cap{position:absolute;top:88px;left:var(--s5);z-index:3;font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:2.5px;color:var(--gray)}
 .scene .wrap{position:relative;z-index:2}
 .sc1::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
   background:linear-gradient(105deg,transparent 42%,rgba(245,245,245,.05) 50%,transparent 58%);
@@ -402,8 +402,8 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
 .sc3w{text-align:center}
 .sc3-line{font-family:var(--serif);font-weight:600;font-size:clamp(34px,5.5vw,76px);line-height:1.15;text-wrap:balance}
 .sc3-line em{font-style:italic;color:var(--gray)}
-.lbx{position:absolute;left:0;right:0;height:0;background:var(--ink);z-index:5;pointer-events:none}
-.lbx.t{top:0}.lbx.b{bottom:0}
+.lbx{position:absolute;left:0;right:0;height:9vh;background:var(--ink);z-index:5;pointer-events:none;transform:scaleY(0);will-change:transform}
+.lbx.t{top:0;transform-origin:top}.lbx.b{bottom:0;transform-origin:bottom}
 @media(min-width:900px){
   body.cine #filme{height:430vh}
   body.cine .stage{position:sticky;top:0;height:100vh;overflow:hidden}
@@ -506,7 +506,7 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
 <div id="filme">
  <div class="stage">
   <section class="scene sc1" aria-label="Capítulo 1: a noite">
-    <div class="hero-photo-wrap" aria-hidden="true"><img class="hero-photo on" src="assets/farol.jpg" alt="" fetchpriority="high"><img class="hero-photo" src="assets/farol-b3.jpg" alt="" loading="lazy"><img class="hero-photo" src="assets/farol-b2.jpg" alt="" loading="lazy"><img class="hero-photo" src="assets/farol-b1.jpg" alt="" loading="lazy"></div>
+    <div class="hero-photo-wrap" aria-hidden="true"><img class="hero-photo on" src="assets/farol.jpg" srcset="assets/farol-m.jpg 820w, assets/farol.jpg 1920w" sizes="100vw" width="1920" height="1086" decoding="async" alt="" fetchpriority="high"><img class="hero-photo" src="assets/farol-b3.jpg" srcset="assets/farol-b3-m.jpg 820w, assets/farol-b3.jpg 1920w" sizes="100vw" width="1920" height="1086" decoding="async" alt="" loading="lazy"><img class="hero-photo" src="assets/farol-b2.jpg" srcset="assets/farol-b2-m.jpg 820w, assets/farol-b2.jpg 1920w" sizes="100vw" width="1920" height="1086" decoding="async" alt="" loading="lazy"><img class="hero-photo" src="assets/farol-b1.jpg" srcset="assets/farol-b1-m.jpg 820w, assets/farol-b1.jpg 1920w" sizes="100vw" width="1920" height="1086" decoding="async" alt="" loading="lazy"></div>
     <div class="hero-veil" aria-hidden="true"></div>
     <span class="cap" aria-hidden="true">CAP. 01 · A NOITE</span>
     <div class="wrap hero-in">
@@ -523,7 +523,7 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
   </div>
   </section>
   <section class="scene sc2" id="conta" aria-label="Capítulo 2: os perdidos">
-    <img class="bg-photo" src="assets/flotilha.jpg" alt="" aria-hidden="true">
+    <img class="bg-photo" src="assets/flotilha.jpg" srcset="assets/flotilha-m.jpg 820w, assets/flotilha.jpg 1920w" sizes="100vw" width="1920" height="1086" decoding="async" alt="" aria-hidden="true">
     <div class="bg-veil sc2v" aria-hidden="true"></div>
     <span class="cap" aria-hidden="true">CAP. 02 · OS PERDIDOS</span>
     <div class="wrap">
@@ -539,7 +539,7 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
     </div></div>
   </section>
   <section class="scene sc3" aria-label="Capítulo 3: o resgate">
-    <img class="bg-photo bgf on" src="assets/barco.jpg" alt="" aria-hidden="true"><img class="bg-photo bgf" src="assets/barco-glow.jpg" alt="" loading="lazy" aria-hidden="true">
+    <img class="bg-photo bgf on" src="assets/barco.jpg" srcset="assets/barco-m.jpg 820w, assets/barco.jpg 1920w" sizes="100vw" width="1920" height="1086" decoding="async" alt="" aria-hidden="true"><img class="bg-photo bgf" src="assets/barco-glow.jpg" srcset="assets/barco-glow-m.jpg 820w, assets/barco-glow.jpg 1920w" sizes="100vw" width="1920" height="1086" decoding="async" alt="" loading="lazy" aria-hidden="true">
     <div class="bg-veil sc3v" aria-hidden="true"></div>
     <span class="cap" aria-hidden="true">CAP. 03 · O RESGATE</span>
     <div class="wrap sc3w"><p class="sc3-line">Um por um,<br><em>de volta pra terra firme.</em></p></div>
@@ -569,7 +569,7 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
 </section>
 
 <section class="statement" aria-label="Nenhum lead se perde">
-  <img class="bg-photo bgf on" src="assets/flotilha.jpg" alt="" loading="lazy" aria-hidden="true"><img class="bg-photo bgf" src="assets/flotilha-b1.jpg" alt="" loading="lazy" aria-hidden="true"><img class="bg-photo bgf" src="assets/flotilha-b2.jpg" alt="" loading="lazy" aria-hidden="true">
+  <img class="bg-photo bgf on" src="assets/flotilha.jpg" srcset="assets/flotilha-m.jpg 820w, assets/flotilha.jpg 1920w" sizes="100vw" width="1920" height="1086" decoding="async" alt="" loading="lazy" aria-hidden="true"><img class="bg-photo bgf" src="assets/flotilha-b1.jpg" srcset="assets/flotilha-b1-m.jpg 820w, assets/flotilha-b1.jpg 1920w" sizes="100vw" width="1920" height="1086" decoding="async" alt="" loading="lazy" aria-hidden="true"><img class="bg-photo bgf" src="assets/flotilha-b2.jpg" srcset="assets/flotilha-b2-m.jpg 820w, assets/flotilha-b2.jpg 1920w" sizes="100vw" width="1920" height="1086" decoding="async" alt="" loading="lazy" aria-hidden="true">
   <div class="bg-veil" aria-hidden="true"></div>
   <p>Nenhum lead<br>se perde.</p>
 </section>
@@ -664,7 +664,7 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
     <p class="lead-p">Nada de "configure seu prompt". Cada ramo tem um funil pronto — as perguntas, as regras e o jeito de falar do seu mercado — ajustado ao seu negócio em dias.</p>
     <ul class="manifest">
       <li>
-        <span class="phw" aria-hidden="true"><img class="ph" src="assets/nicho-celulares.jpg" alt="" loading="lazy"><img class="ph ph-lit" src="assets/nicho-celulares-lit.jpg" alt="" loading="lazy"></span>
+        <span class="phw" aria-hidden="true"><img class="ph" src="assets/nicho-celulares.jpg" width="640" height="640" decoding="async" alt="" loading="lazy"><img class="ph ph-lit" src="assets/nicho-celulares-lit.jpg" width="640" height="640" decoding="async" alt="" loading="lazy"></span>
         <h4>Revenda de celulares</h4>
         <div>
           <p>Avaliação de troca calculada pela sua tabela: modelo, tela, bateria — sem chute e sem prejuízo.</p>
@@ -673,7 +673,7 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
         <span class="tag on">funil pronto</span>
       </li>
       <li>
-        <span class="phw" aria-hidden="true"><img class="ph" src="assets/nicho-energia.jpg" alt="" loading="lazy"><img class="ph ph-lit" src="assets/nicho-energia-lit.jpg" alt="" loading="lazy"></span>
+        <span class="phw" aria-hidden="true"><img class="ph" src="assets/nicho-energia.jpg" width="640" height="640" decoding="async" alt="" loading="lazy"><img class="ph ph-lit" src="assets/nicho-energia-lit.jpg" width="640" height="640" decoding="async" alt="" loading="lazy"></span>
         <h4>Energia por assinatura</h4>
         <div>
           <p>Qualificação pela conta de luz, coleta de documentos e entrega pro seu vendedor — do anúncio à proposta.</p>
@@ -682,7 +682,7 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
         <span class="tag on">funil pronto</span>
       </li>
       <li>
-        <span class="phw" aria-hidden="true"><img class="ph" src="assets/nicho-consignado.jpg" alt="" loading="lazy"><img class="ph ph-lit" src="assets/nicho-consignado-lit.jpg" alt="" loading="lazy"></span>
+        <span class="phw" aria-hidden="true"><img class="ph" src="assets/nicho-consignado.jpg" width="640" height="640" decoding="async" alt="" loading="lazy"><img class="ph ph-lit" src="assets/nicho-consignado-lit.jpg" width="640" height="640" decoding="async" alt="" loading="lazy"></span>
         <h4>Crédito consignado</h4>
         <div>
           <p>Coleta guiada e didática de dados e documentos, com consentimento LGPD no fluxo.</p>
@@ -691,7 +691,7 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
         <span class="tag forming">em formação</span>
       </li>
       <li>
-        <span class="phw" aria-hidden="true"><img class="ph" src="assets/nicho-clinica.jpg" alt="" loading="lazy"><img class="ph ph-lit" src="assets/nicho-clinica-lit.jpg" alt="" loading="lazy"></span>
+        <span class="phw" aria-hidden="true"><img class="ph" src="assets/nicho-clinica.jpg" width="640" height="640" decoding="async" alt="" loading="lazy"><img class="ph ph-lit" src="assets/nicho-clinica-lit.jpg" width="640" height="640" decoding="async" alt="" loading="lazy"></span>
         <h4>Clínicas e serviços</h4>
         <div>
           <p>Agendamento que confirma, lembra e reagenda — agenda cheia sem telefone tocando.</p>
@@ -871,7 +871,7 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
 </section>
 
 <section class="final">
-  <img class="bg-photo bgf on" src="assets/loja.jpg" alt="" loading="lazy" aria-hidden="true"><img class="bg-photo bgf" src="assets/loja-glow.jpg" alt="" loading="lazy" aria-hidden="true">
+  <img class="bg-photo bgf on" src="assets/loja.jpg" srcset="assets/loja-m.jpg 820w, assets/loja.jpg 1920w" sizes="100vw" width="1920" height="1086" decoding="async" alt="" loading="lazy" aria-hidden="true"><img class="bg-photo bgf" src="assets/loja-glow.jpg" srcset="assets/loja-glow-m.jpg 820w, assets/loja-glow.jpg 1920w" sizes="100vw" width="1920" height="1086" decoding="async" alt="" loading="lazy" aria-hidden="true">
   <div class="bg-veil" aria-hidden="true"></div>
   <div class="wrap">
     <h2>Traga seus leads <em>pra terra firme.</em></h2>
@@ -885,7 +885,7 @@ footer{border-top:1px solid var(--hair);padding:var(--s6) 0}
   </div>
 </section>
 
-<div class="foot-mark" aria-hidden="true"><img src="assets/marca.png" alt="" loading="lazy"></div>
+<div class="foot-mark" aria-hidden="true"><img src="assets/marca.png" alt="" loading="lazy" width="512" height="512" decoding="async"></div>
 <div id="hud" hidden><svg viewBox="0 0 34 24" aria-hidden="true"><path class="sail" d="M17 1l8 11H9l8-11Z"/><path class="hull" d="M3 14h28l-7 8H10l-7-8Z"/></svg><span><b id="hud-n">0</b>/7 resgatados</span></div>
 <div id="rescue-flash" aria-hidden="true"></div>
 <div id="rescue-msg" role="dialog" aria-modal="true" aria-labelledby="rescue-title" aria-hidden="true" inert>
@@ -911,8 +911,7 @@ if (matchMedia('(hover:hover) and (pointer:fine)').matches && !calm) {
   document.addEventListener('mousemove', (e) => {
     tx = e.clientX; ty = e.clientY;
     if (!raf) raf = requestAnimationFrame(() => {
-      torch.style.setProperty('--mx', tx + 'px');
-      torch.style.setProperty('--my', ty + 'px');
+      torch.style.transform = 'translate(' + tx + 'px,' + ty + 'px)';
       raf = null;
     });
   }, { passive: true });
@@ -1102,18 +1101,18 @@ if (!calm) {
         document.body.classList.add('cine');
         const tl = gsap.timeline({ scrollTrigger: { trigger: '#filme', start: 'top top', end: 'bottom bottom', scrub: 0.6 } });
         tl.to('.sc1 .hero-photo', { scale: 1.12, yPercent: 6, ease: 'none', duration: 3 }, 0)
-          .to('.lbx', { height: '9vh', duration: .6 }, 2.5)
+          .to('.lbx', { scaleY: 1, duration: .6 }, 2.5)
           .to('.sc1', { opacity: 0, duration: .8 }, 3)
           .fromTo('.sc2', { opacity: 0 }, { opacity: 1, duration: .8 }, 3.2)
           .fromTo('.sc2 .bg-photo', { scale: 1.14 }, { scale: 1.02, ease: 'none', duration: 3.2 }, 3.2)
           .call(() => { fireFleet(); fireCnt(); }, [], 3.8)
-          .to('.lbx', { height: 0, duration: .6 }, 4)
-          .to('.lbx', { height: '9vh', duration: .6 }, 6.4)
+          .to('.lbx', { scaleY: 0, duration: .6 }, 4)
+          .to('.lbx', { scaleY: 1, duration: .6 }, 6.4)
           .to('.sc2', { opacity: 0, duration: .8 }, 6.9)
           .fromTo('.sc3', { opacity: 0 }, { opacity: 1, duration: .8 }, 7.1)
           .fromTo('.sc3 .bg-photo', { scale: 1.18 }, { scale: 1.03, ease: 'none', duration: 2.8 }, 7.1)
           .fromTo('.sc3-line', { opacity: 0, y: 34 }, { opacity: 1, y: 0, duration: .9 }, 7.5)
-          .to('.lbx', { height: 0, duration: .6 }, 8.2);
+          .to('.lbx', { scaleY: 0, duration: .6 }, 8.2);
       }
       gsap.fromTo('.statement .bg-photo', { scale: 1.12 }, { scale: 1, ease: 'none',
         scrollTrigger: { trigger: '.statement', start: 'top bottom', end: 'bottom top', scrub: true } });
@@ -1147,15 +1146,20 @@ const fleetIO = new IntersectionObserver((entries) => {
 }, { threshold: 0.4 });
 fleetIO.observe(flotilla);
 
+const depthEl = document.getElementById('depth');
+const velEl = document.getElementById('veleiro');
+let scrollRaf = null;
 addEventListener('scroll', () => {
-  const d = document.getElementById('depth');
-  if (d) d.textContent = '▾ ' + Math.max(0, Math.round(scrollY / 7)) + ' m';
-  const v = document.getElementById('veleiro');
-  if (v) {
-    const max = document.documentElement.scrollHeight - innerHeight;
-    const p = max > 0 ? scrollY / max : 0;
-    v.style.transform = 'translateX(' + (12 + p * (innerWidth - 70)) + 'px)';
-  }
+  if (scrollRaf) return;
+  scrollRaf = requestAnimationFrame(() => {
+    scrollRaf = null;
+    if (depthEl) depthEl.textContent = '▾ ' + Math.max(0, Math.round(scrollY / 7)) + ' m';
+    if (velEl) {
+      const max = document.documentElement.scrollHeight - innerHeight;
+      const p = max > 0 ? scrollY / max : 0;
+      velEl.style.transform = 'translateX(' + (12 + p * (innerWidth - 70)) + 'px)';
+    }
+  });
 }, { passive: true });
 
 if (!calm) {
